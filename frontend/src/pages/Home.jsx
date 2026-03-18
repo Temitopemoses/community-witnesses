@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       {/* ════════ GLOBAL VISION ════════ */}
-      <section className="py-40 bg-slate-50 overflow-hidden">
+      <section className="py-45 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="reveal space-y-10 order-2 lg:order-1">
             <span className="text-brand-primary text-sm font-black uppercase tracking-[0.3em] block">Our Global Philosophy</span>
@@ -164,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* ════════ JOIN THE FORCE ════════ */}
-      <section className="py-40 relative group mb-32">
+      <section className=" py-50 relative group mb-32 ">
          <div className="absolute inset-x-20 inset-y-0 bg-brand-primary rounded-[4rem] group-hover:inset-x-0 transition-all duration-700 overflow-hidden shadow-2xl shadow-brand-primary/30">
             <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-white/10 rounded-full blur-[100px]" />
             <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-black/10 rounded-full blur-[100px]" />
