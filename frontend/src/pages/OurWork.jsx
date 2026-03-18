@@ -75,7 +75,7 @@ export default function OurWork() {
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <span className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-brand-primary/20 backdrop-blur-md border border-brand-primary/30 mb-8 animate-in shadow-xl text-brand-primary text-sm font-bold tracking-widest uppercase">
              <img src="/images/logo_cq.png" alt="Logo" className="w-5 h-5 object-contain brightness-0 invert opacity-80" />
-             The Work of Global Impact
+             The Work of Impact
           </span>
           <h1 className="font-heading text-6xl md:text-8xl font-black mb-8 animate-in leading-tight tracking-tight">
              Impact of <br />
@@ -92,7 +92,7 @@ export default function OurWork() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="reveal text-center max-w-3xl mx-auto mb-24">
              <span className="text-brand-primary text-sm font-black uppercase tracking-[0.3em] block mb-8">Pillars of Impact</span>
-             <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-extrabold mb-12 tracking-tight leading-tight">Global Restorative <span className="text-brand-primary italic">Programs.</span></h2>
+             <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-extrabold mb-12 tracking-tight leading-tight">Restorative <span className="text-brand-primary italic">Programs.</span></h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">

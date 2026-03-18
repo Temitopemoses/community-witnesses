@@ -36,13 +36,13 @@ export default function Contact() {
         </div>
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-brand-primary/20 backdrop-blur-md border border-brand-primary/30 mb-8 animate-in shadow-xl text-brand-primary text-sm font-bold tracking-widest uppercase">
-             Connect Globally
+             Connect with Us
           </span>
           <h1 className="font-heading text-6xl md:text-8xl font-black mb-8 animate-in leading-tight tracking-tight">
              How can we <span className="text-brand-primary underline decoration-brand-primary/40 decoration-4 underline-offset-[16px]">Serve</span> you?
           </h1>
           <p className="font-body text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto animate-in leading-relaxed font-medium">
-             Reach out to our international team with questions, partnership proposals, or requests for direct support.
+             Reach out to our team with questions, partnership proposals, or requests for direct support.
           </p>
         </div>
       </section>
@@ -64,7 +64,7 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="bg-white border border-slate-100 p-12 md:p-16 rounded-[4rem] shadow-2xl skew-y-1 transform hover:skew-y-0 transition-transform duration-700">
                 <h3 className="font-heading text-4xl text-slate-900 mb-4 font-black italic text-brand-secondary">Submit Inquiry</h3>
-                <p className="text-slate-400 text-sm mb-12 font-bold tracking-widest uppercase">Official international correspondence.</p>
+                <p className="text-slate-400 text-sm mb-12 font-bold tracking-widest uppercase">Official correspondence.</p>
 
                 <div className="space-y-10">
                    <div className="grid sm:grid-cols-2 gap-10">

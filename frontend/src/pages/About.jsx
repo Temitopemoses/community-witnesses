@@ -64,16 +64,13 @@ export default function About() {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-slate-900/60" />
         </div>
         <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <span className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-brand-primary/20 backdrop-blur-md border border-brand-primary/30 mb-8 animate-in shadow-xl text-brand-primary text-sm font-bold tracking-widest uppercase">
-             <img src="/images/logo_cq.png" alt="Logo" className="w-5 h-5 object-contain brightness-0 invert opacity-80" />
-             Our Global Philosophy
-          </span>
+          
           <h1 className="font-heading text-6xl md:text-8xl font-black mb-8 animate-in leading-tight tracking-tight">
              Driven by <span className="text-brand-primary italic">Dignity.</span> <br />
              Led by <span className="text-white underline decoration-brand-primary/40 decoration-4">Love.</span>
           </h1>
           <p className="font-body text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto animate-in leading-relaxed font-medium">
-             An international standard organization dedicated to restoring hope and dignity to those at risk in our communities.
+             A community interest company dedicated to restoring hope and dignity to those at risk in our communities.
           </p>
         </div>
       </section>
@@ -83,7 +80,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="reveal space-y-12">
             <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-extrabold leading-tight">
-               Our <span className="text-brand-primary">Vision</span> for Global Restoration.
+               Our <span className="text-brand-primary">Vision</span> for Restoration.
             </h2>
             <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
               We envision a community where individuals and families affected by homelessness, addiction, and mental health challenges are treated with love, respect, and dignity—fully supported towards lasting freedom.
@@ -92,7 +89,7 @@ export default function About() {
                <div className="p-8 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm">
                   <Award className="text-brand-primary mb-6" size={48} strokeWidth={2.5} />
                   <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">The Mission</h3>
-                  <p className="text-slate-500 text-sm font-medium leading-relaxed italic">Restoring hope and dignity to members of our community who are at risk.</p>
+                  <p className="text-slate-500 text-sm font-medium leading-relaxed italic">To see lives restored, families rebuilt, and communities transformed through love, deliverance, salvation, and service..</p>
                </div>
                <div className="p-8 bg-brand-primary text-white rounded-3xl shadow-xl shadow-brand-primary/20">
                   <Globe className="text-white mb-6" size={48} strokeWidth={2.5} />
