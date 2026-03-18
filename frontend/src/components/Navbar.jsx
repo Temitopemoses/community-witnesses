@@ -42,9 +42,6 @@ export default function Navbar() {
              <span className="font-heading text-lg font-bold uppercase tracking-tight text-white leading-none">
                 Community Witnesses
              </span>
-             <span className="text-[10px] uppercase tracking-[0.2em] text-brand-primary font-bold">
-                Global Outreach
-             </span>
           </div>
         </Link>
 

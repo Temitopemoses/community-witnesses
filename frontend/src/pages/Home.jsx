@@ -69,16 +69,16 @@ export default function Home() {
         <div className="relative z-10 text-center max-w-5xl px-6">
           <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-in shadow-xl">
              <img src="/images/logo_cq.png" alt="Community Witnesses Logo" className="w-6 h-6 object-contain brightness-0 invert" />
-             <span className="text-white text-sm font-bold tracking-widest uppercase">Community Witnesses Worldwide</span>
+             <span className="text-white text-sm font-bold tracking-widest uppercase">Community Witnesses</span>
           </div>
           
           <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-white font-extrabold leading-[1.05] tracking-tight mb-8 animate-in">
              Restoring <span className="text-brand-primary underline decoration-brand-primary/30 decoration-[8px] underline-offset-[12px]">Hope</span> <br />
-             Building <span className="text-white">Dignity.</span>
+             Building <span className="text-white">Community.</span>
           </h1>
           
           <p className="font-body text-slate-200 text-lg md:text-2xl max-w-3xl mx-auto mb-12 animate-in leading-relaxed font-medium opacity-90" style={{ animationDelay: '0.2s' }}>
-             An international organization dedicated to providing lasting freedom and restoration to communities facing homelessness, addiction, and mental health challenges.
+             A Community interest company dedicated to providing lasting freedom and restoration to communities facing homelessness, addiction, and mental health challenges.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-in" style={{ animationDelay: '0.4s' }}>
@@ -114,13 +114,12 @@ export default function Home() {
       <section className="py-45 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="reveal space-y-10 order-2 lg:order-1">
-            <span className="text-brand-primary text-sm font-black uppercase tracking-[0.3em] block">Our Global Philosophy</span>
             <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-black leading-tight">
                Every community deserves <br />
                a brighter <span className="text-brand-primary italic">future.</span>
             </h2>
             <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium opacity-80">
-              Community Witnesses envisions a world where individuals at risk are treated with love, respect, and dignity. We are a community-led force driving positive change through direct action and faith-inspired advocacy.
+              Community Witnesses envisions a community where individuals at risk are treated with love, respect, and dignity. We are a community-led force driving positive change through direct action and faith-inspired advocacy.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Link to="/about" className="px-10 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-brand-primary hover:scale-[1.05] transition-all shadow-xl shadow-slate-900/20">
@@ -174,7 +173,7 @@ export default function Home() {
                   Be a source <br /> of <span className="text-brand-secondary underline underline-offset-[20px] decoration-white">hope.</span>
                </h2>
                <p className="text-white/90 text-xl md:text-3xl max-w-2xl mx-auto mb-16 font-medium leading-relaxed italic">
-                  Join a global community of change agents dedicated to restoring dignity and providing restoration.
+                  Join a community of change agents dedicated to restoring dignity and providing restoration.
                </p>
                <div className="flex flex-col sm:flex-row gap-8">
                   <Link to="/get-involved" className="px-16 py-6 bg-slate-900 text-white font-black text-2xl rounded-2xl hover:bg-white hover:text-slate-900 transition-all duration-500 shadow-2xl">
