@@ -1,0 +1,14 @@
+{
+  "name": "community-witnesses",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Community Witnesses digital hub",
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "preview": "npm run preview --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
