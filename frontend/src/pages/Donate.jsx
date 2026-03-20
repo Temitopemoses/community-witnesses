@@ -1,173 +1,265 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Heart, Globe, Shield, CreditCard, CheckCircle, ArrowRight, Star, Award, TrendingUp } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { Heart, Globe, Shield, CreditCard, CheckCircle, ArrowRight, Star, Award, TrendingUp, AlertCircle, Loader2 } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
 
 const donationAmounts = [25, 50, 100, 250, 500, 1000]
 
 export default function Donate() {
   const sectionRef = useReveal()
+  const location = useLocation()
   const [selectedAmount, setSelectedAmount] = useState(100)
   const [customAmount, setCustomAmount] = useState('')
   const [donationType, setDonationType] = useState('one-time')
-  const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState(null) // 'success' | 'canceled' | null
 
-  const handleDonate = (e) => {
+  useEffect(() => {
+    const query = new URLSearchParams(location.search)
+    if (query.get('success')) {
+      setStatus('success')
+    }
+    if (query.get('canceled')) {
+      setStatus('canceled')
+    }
+  }, [location])
+
+  const handleDonate = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    
+    const amount = customAmount ? parseFloat(customAmount) : selectedAmount
+
+    try {
+      // Assuming backend runs on localhost:8000
+      const response = await fetch('http://localhost:8000/api/donations/create-checkout-session/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount,
+          donation_type: donationType,
+        }),
+      })
+
+      const data = await response.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        console.error('Failed to create checkout session', data)
+        setLoading(false)
+        alert('Could not initiate payment. Please ensure the backend is running.')
+      }
+    } catch (error) {
+      console.error('Error initiating donation:', error)
+      setLoading(false)
+      alert('Error connecting to payment server. Please try again later.')
+    }
   }
 
-  const activeAmount = customAmount ? parseInt(customAmount) : selectedAmount
+  const activeAmount = customAmount ? parseFloat(customAmount) : selectedAmount
 
   return (
     <div ref={sectionRef}>
       {/* ════════ PAGE HERO ════════ */}
-      <section className="relative pt-48 pb-32 bg-slate-900 overflow-hidden text-center text-white">
+      <section className="relative pt-40 pb-24 bg-brand-secondary text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/hero.png" 
-            alt="Donate" 
-            className="w-full h-full object-cover opacity-40 filter saturate-[1.2] brightness-[0.8]"
+          <img
+            src="/images/hero.png"
+            alt="Donate"
+            className="w-full h-full object-cover opacity-20 filter saturate-[1.2] brightness-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-slate-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-secondary/80 to-brand-secondary" />
         </div>
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-brand-primary/20 backdrop-blur-md border border-brand-primary/30 mb-8 animate-in shadow-xl text-brand-primary text-sm font-bold tracking-widest uppercase">
-             Fuel the Restoration
+        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6 text-brand-primary text-xs font-bold tracking-[0.2em] uppercase">
+            Support Our Mission
           </span>
-          <h1 className="font-heading text-6xl md:text-8xl font-black mb-8 animate-in leading-tight tracking-tight">
-             Give with <span className="text-brand-primary underline decoration-brand-primary/40 decoration-4 underline-offset-[16px]">Impact.</span> <br />
-             Restore a life.
+          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            Give with <span className="text-brand-primary">Impact</span>
           </h1>
-          <p className="font-body text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto animate-in leading-relaxed font-medium">
-             Your support provides lasting freedom for those at risk or experiencing hardship. Every contribution makes a difference.
+          <p className="font-body text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Your generous contributions provide the essential resources needed to restore hope
+            and dignity to those facing hardship in our community.
           </p>
         </div>
       </section>
 
-      {/* ════════ DONATION FORM ════════ */}
-      <section className="py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-start">
-          {/* Info Side */}
-          <div className="reveal space-y-16 lg:sticky lg:top-48">
-            <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-extrabold leading-tight">
-               Your support <span className="text-brand-primary italic">restores hope.</span>
-            </h2>
-            <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
-              We envision a community where individuals are treated with love, respect, and dignity. Your gift enables us to provide the resources needed for complete freedom.
-            </p>
-            
-            <div className="space-y-10 pt-8">
-               {[
-                 { icon: Globe, title: 'Transparency', desc: 'Secure and transparent processing for every gift.', color: 'text-blue-500', bg: 'bg-blue-50' },
-                 { icon: Award, title: 'Impact Verified', desc: 'Every penny goes directly to community restoration.', color: 'text-amber-500', bg: 'bg-amber-50' },
-                 { icon: TrendingUp, title: 'Direct Growth', desc: 'Providing the fuel for individuals to gain victory.', color: 'text-emerald-500', bg: 'bg-emerald-50' },
-               ].map((item) => (
-                 <div key={item.title} className="flex gap-6 items-start group">
-                    <div className={`w-14 h-14 shrink-0 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-500`}>
-                       <item.icon size={28} strokeWidth={2.5} />
-                    </div>
-                    <div>
-                       <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight italic underline decoration-slate-100 decoration-4 group-hover:decoration-brand-primary transition-all">{item.title}</h3>
-                       <p className="text-slate-500 text-sm font-medium leading-relaxed italic opacity-80">{item.desc}</p>
-                    </div>
-                 </div>
-               ))}
+      {/* ════════ DONATION CONTENT ════════ */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-start">
+
+          {/* Info Side (Col-5) */}
+          <div className="lg:col-span-5 space-y-12 lg:sticky lg:top-32 reveal">
+            <div>
+              <h2 className="font-heading text-4xl text-slate-900 font-bold mb-6 leading-tight">
+                Your support <br /> <span className="text-brand-primary italic">restores hope.</span>
+              </h2>
+              <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                Community Witnesses is dedicated to providing lasting freedom for those at risk.
+                100% of your donation goes directly towards our community outreach and support programs.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {[
+                { icon: Globe, title: 'Global Transparency', desc: 'We adhere to the highest standards of financial accountability and transparency.', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
+                { icon: Shield, title: 'Secure Processing', desc: 'Your payment information is encrypted and handled through secure global gateways.', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
+                { icon: Star, title: 'Life-Changing Impact', desc: 'See how your contributions directly transform lives in our impact reports.', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
+              ].map((item) => (
+                <div key={item.title} className="flex gap-6 items-start">
+                  <div className={`w-12 h-12 shrink-0 ${item.bg} ${item.color} rounded-xl flex items-center justify-center border border-brand-primary/10`}>
+                    <item.icon size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">{item.title}</h3>
+                    <p className="text-lg font-bold text-slate-900 mb-1">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="p-8 bg-white border border-slate-200 rounded-2xl shadow-sm">
+              <div className="flex items-center gap-4 mb-4 text-brand-primary">
+                <Heart size={32} />
+                <h4 className="font-heading text-xl font-bold text-slate-900">Charity Overview</h4>
+              </div>
+              <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                "We rely on the power of God for transformation and restoration. Your gift is an investment in a brighter future for every individual."
+              </p>
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-400 tracking-widest uppercase">
+                Registered Community Interest Company
+              </div>
             </div>
           </div>
 
-          {/* Form Side */}
-          <div className="reveal">
-            {submitted ? (
-              <div className="bg-muted p-16 text-center rounded-[3rem] border border-brand-primary/20 shadow-2xl">
-                <CheckCircle size={80} className="text-brand-primary mx-auto mb-8" strokeWidth={2.5} fill="currentColor" fillOpacity={0.1} />
-                <h2 className="font-heading text-4xl text-slate-900 mb-6 font-black italic">Gratitude.</h2>
-                <p className="text-slate-500 text-xl mb-12 font-medium leading-relaxed opacity-80">
-                  Your generous gift of <strong>£{activeAmount}</strong> has been received with immense gratitude. We are restoring hope together.
+          {/* Form Side (Col-7) */}
+          <div className="lg:col-span-7 reveal">
+            {status === 'success' ? (
+              <div className="bg-white p-12 lg:p-16 text-center rounded-3xl border border-slate-200 shadow-xl">
+                <div className="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 border border-emerald-100">
+                  <CheckCircle size={40} />
+                </div>
+                <h2 className="font-heading text-3xl text-slate-900 mb-4 font-bold">Thank You</h2>
+                <p className="text-slate-600 text-lg mb-10 leading-relaxed">
+                  Your generous gift has been received.
+                  Together, we are making a lasting difference in our community.
                 </p>
-                <Link to="/" className="inline-flex items-center gap-2 px-10 py-4 bg-brand-primary text-white font-bold rounded-full hover:bg-slate-900 transition-all shadow-xl shadow-brand-primary/20">
-                   Return to Community <ArrowRight size={20} />
+                <Link to="/" className="btn-primary inline-block">
+                  Return Home
                 </Link>
               </div>
             ) : (
-              <form onSubmit={handleDonate} className="bg-white border border-slate-100 p-12 md:p-16 rounded-[4rem] shadow-2xl skew-y-1 transform hover:skew-y-0 transition-transform duration-700">
-                <h3 className="font-heading text-4xl text-slate-900 mb-12 font-black italic">Make a Contribution</h3>
+              <div className="bg-white border border-slate-200 p-8 md:p-12 rounded-3xl shadow-xl">
+                {status === 'canceled' && (
+                  <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-4 text-amber-700">
+                    <AlertCircle size={24} />
+                    <p className="text-sm font-medium">The payment process was canceled. Please try again or contact us if you need help.</p>
+                  </div>
+                )}
+                
+                <div className="mb-10">
+                  <h3 className="font-heading text-3xl text-slate-900 font-bold mb-2">Make a Contribution</h3>
+                  <p className="text-slate-500">Every contribution helps us reach more people in need.</p>
+                </div>
 
-                {/* Donation Type Header */}
-                <div className="flex bg-slate-100 p-2 rounded-2xl mb-12">
-                  {['one-time', 'recurring'].map((type) => (
+                <form onSubmit={handleDonate} className="space-y-10">
+                  {/* Donation Type */}
+                  <div className="flex p-1 bg-slate-100 rounded-xl">
+                    {['one-time', 'monthly'].map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => setDonationType(type)}
+                        className={`flex-1 py-3 text-sm font-bold tracking-widest uppercase rounded-lg transition-all ${donationType === type
+                            ? 'bg-white text-brand-primary shadow-sm'
+                            : 'text-slate-500 hover:text-slate-700'
+                          }`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Amount Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {donationAmounts.map((amount) => (
+                      <button
+                        key={amount}
+                        type="button"
+                        onClick={() => { setSelectedAmount(amount); setCustomAmount(''); }}
+                        className={`py-6 rounded-xl border-2 transition-all font-heading text-2xl font-bold ${selectedAmount === amount && !customAmount
+                            ? 'bg-brand-primary text-white border-brand-primary shadow-lg shadow-brand-primary/20 scale-[1.02]'
+                            : 'border-slate-100 bg-slate-50 text-slate-400 hover:border-brand-primary/20 hover:text-brand-primary'
+                          }`}
+                      >
+                        £{amount}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Custom Amount */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-slate-700">Or enter a custom amount</label>
+                    <div className="relative">
+                      <span className="absolute left-5 top-1/2 -translate-y-1/2 text-2xl font-bold text-slate-400">£</span>
+                      <input
+                        type="number"
+                        placeholder="0.00"
+                        value={customAmount}
+                        onChange={(e) => setCustomAmount(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 py-4 pl-12 pr-5 rounded-xl text-2xl font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Payment Button */}
+                  <div className="pt-4">
                     <button
-                      key={type}
-                      type="button"
-                      onClick={() => setDonationType(type)}
-                      className={`flex-1 py-4 text-sm font-bold tracking-widest uppercase rounded-xl transition-all duration-300 ${
-                        donationType === type ? 'bg-white text-brand-primary shadow-xl' : 'text-slate-400 hover:text-slate-600'
-                      }`}
+                      type="submit"
+                      disabled={loading}
+                      className="w-full btn-primary flex items-center justify-center gap-4 py-5 text-xl disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      {type}
+                      {loading ? (
+                        <>
+                          <Loader2 className="animate-spin" size={24} />
+                          <span>Initiating Secure Gateway...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Donate £{activeAmount}</span>
+                          <CreditCard size={24} />
+                        </>
+                      )}
                     </button>
-                  ))}
-                </div>
-
-                {/* Amount Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-12">
-                  {donationAmounts.map((amount) => (
-                    <button
-                      key={amount}
-                      type="button"
-                      onClick={() => { setSelectedAmount(amount); setCustomAmount(''); }}
-                      className={`py-8 rounded-2xl border-2 transition-all duration-300 font-heading text-3xl font-black italic ${
-                        selectedAmount === amount && !customAmount
-                          ? 'bg-brand-primary text-white border-brand-primary shadow-xl shadow-brand-primary/20'
-                          : 'border-slate-50 bg-slate-50 text-slate-400 hover:border-brand-primary/20 hover:text-brand-primary'
-                      }`}
-                    >
-                      £{amount}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Custom Amount */}
-                <div className="mb-12">
-                   <input
-                     type="number"
-                     placeholder="Customize Amount (£)"
-                     value={customAmount}
-                     onChange={(e) => setCustomAmount(e.target.value)}
-                     className="w-full bg-slate-50 border-2 border-slate-50 py-6 px-8 rounded-2xl text-2xl font-black focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300 italic"
-                   />
-                </div>
-
-                {/* Submit Button Luxe */}
-                <button
-                  type="submit"
-                  className="w-full py-8 bg-slate-900 text-white font-heading text-3xl font-black italic hover:bg-brand-primary transition-all duration-500 flex items-center justify-center gap-6 rounded-3xl shadow-2xl group active:scale-95"
-                >
-                  Process Donation
-                  <CreditCard className="group-hover:translate-x-2 transition-transform" strokeWidth={2.5} size={32} />
-                </button>
-
-                <p className="text-center text-slate-300 text-xs font-bold tracking-widest uppercase mt-12 flex items-center justify-center gap-2">
-                   <Shield size={16} /> Secure Encrypted Gateway
-                </p>
-              </form>
+                    <div className="mt-8 flex items-center justify-center gap-6 text-slate-300">
+                      <Shield size={24} className="opacity-50" />
+                      <div className="h-6 w-px bg-slate-200" />
+                      <span className="text-[10px] uppercase font-bold tracking-[0.2em]">Secure Stripe Gateway</span>
+                    </div>
+                  </div>
+                </form>
+              </div>
             )}
           </div>
+
         </div>
       </section>
 
-      {/* ════════ MISSION TESTIMONY ════════ */}
-      <section className="py-40 bg-slate-50 border-t border-slate-100">
-         <div className="max-w-4xl mx-auto px-6 text-center reveal">
-            <Heart className="text-brand-primary mx-auto mb-12" strokeWidth={3} size={64} fill="white" />
-            <h2 className="font-heading text-5xl md:text-8xl text-slate-900 font-black italic mb-12 tracking-tight">Love is the solution.</h2>
-            <p className="text-slate-500 text-xl md:text-3xl font-medium tracking-wide italic leading-relaxed mb-20">"We are committed to demonstrating genuine love without judgement or condemnation. Everyone deserves to be treated with honour and worth."</p>
-            <div className="flex flex-wrap gap-8 justify-center">
-               <Link to="/about" className="px-12 py-5 bg-white text-slate-900 font-bold rounded-2xl border border-slate-200 shadow-xl hover:bg-brand-primary hover:text-white transition-all">
-                  Our Core Values
-               </Link>
-            </div>
-         </div>
+      {/* ════════ TESTIMONIAL ════════ */}
+      <section className="py-24 bg-white border-t border-slate-100">
+        <div className="max-w-4xl mx-auto px-6 text-center reveal">
+          <span className="text-brand-primary text-xs font-bold uppercase tracking-[0.3em] mb-8 block">Our Vision in Action</span>
+          <p className="text-slate-800 text-2xl md:text-3xl font-medium leading-relaxed mb-12 italic">
+            "We envision a community where individuals at risk of homelessness and addiction are treated with love and respect, and are fully supported towards lasting freedom."
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-px bg-slate-200" />
+            <Heart className="text-brand-primary" fill="currentColor" size={24} />
+            <div className="w-12 h-px bg-slate-200" />
+          </div>
+        </div>
       </section>
     </div>
   )
