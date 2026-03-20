@@ -25,146 +25,178 @@ export default function Contact() {
   return (
     <div ref={sectionRef}>
       {/* ════════ PAGE HERO ════════ */}
-      <section className="relative pt-48 pb-32 bg-slate-900 text-white overflow-hidden text-center">
+      <section className="relative pt-40 pb-24 bg-brand-secondary text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/hero.png" 
             alt="Contact" 
-            className="w-full h-full object-cover opacity-40 filter saturate-[1.2] brightness-[0.8]"
+            className="w-full h-full object-cover opacity-20 filter saturate-[1.2] brightness-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-slate-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-secondary/80 to-brand-secondary" />
         </div>
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-brand-primary/20 backdrop-blur-md border border-brand-primary/30 mb-8 animate-in shadow-xl text-brand-primary text-sm font-bold tracking-widest uppercase">
-             Connect with Us
+        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6 text-brand-primary text-xs font-bold tracking-[0.2em] uppercase">
+            Get in Touch
           </span>
-          <h1 className="font-heading text-6xl md:text-8xl font-black mb-8 animate-in leading-tight tracking-tight">
-             How can we <span className="text-brand-primary underline decoration-brand-primary/40 decoration-4 underline-offset-[16px]">Serve</span> you?
+          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            How can we <span className="text-brand-primary">serve</span> you?
           </h1>
-          <p className="font-body text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto animate-in leading-relaxed font-medium">
-             Reach out to our team with questions, partnership proposals, or requests for direct support.
+          <p className="font-body text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Whether you have questions about our mission or need direct assistance, 
+            our team is here to listen and respond with compassion.
           </p>
         </div>
       </section>
 
-      {/* ════════ CONTACT GRID ════════ */}
-      <section className="py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-start">
-          {/* Form Side */}
-          <div className="reveal">
-            {submitted ? (
-              <div className="bg-muted p-16 text-center rounded-[3rem] border border-brand-primary/20 shadow-2xl">
-                <CheckCircle size={80} className="text-brand-primary mx-auto mb-8" strokeWidth={2.5} fill="currentColor" fillOpacity={0.1} />
-                <h2 className="font-heading text-4xl text-slate-900 mb-6 font-black italic">Message Sent.</h2>
-                <p className="text-slate-500 text-xl mb-12 font-medium leading-relaxed opacity-80">
-                  Thank you, <strong>{formData.name}</strong>. Your inquiry has been logged with our global support team. We will respond within 24-48 hours.
-                </p>
-                <div onClick={() => setSubmitted(false)} className="inline-flex items-center gap-2 px-10 py-4 bg-brand-primary text-white font-bold rounded-full hover:bg-slate-900 transition-all shadow-xl cursor-pointer">Submit Another Global Inquiry</div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-white border border-slate-100 p-12 md:p-16 rounded-[4rem] shadow-2xl skew-y-1 transform hover:skew-y-0 transition-transform duration-700">
-                <h3 className="font-heading text-4xl text-slate-900 mb-4 font-black italic text-brand-secondary">Submit Inquiry</h3>
-                <p className="text-slate-400 text-sm mb-12 font-bold tracking-widest uppercase">Official correspondence.</p>
-
-                <div className="space-y-10">
-                   <div className="grid sm:grid-cols-2 gap-10">
-                      <div className="space-y-2">
-                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Your Name</label>
-                         <input
-                           type="text"
-                           name="name"
-                           required
-                           value={formData.name}
-                           onChange={handleChange}
-                           className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300"
-                         />
-                      </div>
-                      <div className="space-y-2">
-                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Email Address</label>
-                         <input
-                           type="email"
-                           name="email"
-                           required
-                           value={formData.email}
-                           onChange={handleChange}
-                           className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300"
-                         />
-                      </div>
-                   </div>
-
-                   <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Inquiry Subject</label>
-                      <input
-                        type="text"
-                        name="subject"
-                        required
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300"
-                      />
-                   </div>
-
-                   <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Your Message</label>
-                      <textarea
-                        name="message"
-                        rows={5}
-                        required
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300 h-48 resize-none"
-                      />
-                   </div>
-
-                   <button
-                     type="submit"
-                     className="w-full py-6 bg-brand-secondary text-white font-heading text-2xl font-black italic hover:bg-brand-primary transition-all duration-500 flex items-center justify-center gap-4 rounded-3xl shadow-2xl group active:scale-95"
-                   >
-                     Send Inquire
-                     <Send className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" strokeWidth={2.5} size={24} />
-                   </button>
-                </div>
-              </form>
-            )}
-          </div>
-
-          {/* Info Side */}
-          <div className="reveal space-y-24 lg:sticky lg:top-48">
-            <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-extrabold leading-tight">
-               Our doors are open <br /> to <span className="text-brand-primary italic">everyone.</span>
-            </h2>
+      {/* ════════ CONTACT CONTENT ════════ */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Info Side (Col-5) */}
+          <div className="lg:col-span-5 space-y-12 lg:sticky lg:top-32 reveal">
+            <div>
+              <h2 className="font-heading text-4xl text-slate-900 font-bold mb-6 leading-tight">
+                Our doors are open <br /> to <span className="text-brand-primary italic">everyone.</span>
+              </h2>
+              <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                Community Witnesses is dedicated to restoration and hope. 
+                Contact us through any of the channels below or visit our global headquarters.
+              </p>
+            </div>
             
-            <div className="space-y-12">
+            <div className="space-y-8">
                {[
-                 { icon: Mail, title: 'Email Correspondence', info: 'info@communitywitnesses.org', label: 'Response within 24h', color: 'text-blue-500', bg: 'bg-blue-50' },
-                 { icon: Phone, title: 'International Hotline', info: '+44 (0) 123 456 789', label: 'Emergency & General', color: 'text-emerald-500', bg: 'bg-emerald-50' },
-                 { icon: MapPin, title: 'Global Office', info: 'United Kingdom', label: 'Official Headquarters', color: 'text-rose-500', bg: 'bg-rose-50' },
+                 { icon: Mail, title: 'Email Correspondence', info: 'info@communitywitnesses.org', label: 'Response within 24h', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
+                 { icon: Phone, title: 'International Hotline', info: '+44 (0) 123 456 789', label: 'Emergency & General Support', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
+                 { icon: MapPin, title: 'Global Office', info: 'Manchester, United Kingdom', label: 'Official Headquarters', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
                ].map((item) => (
-                 <div key={item.title} className="flex gap-6 items-start group">
-                    <div className={`w-14 h-14 shrink-0 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-500`}>
-                       <item.icon size={28} strokeWidth={2.5} />
+                 <div key={item.title} className="flex gap-6 items-start">
+                    <div className={`w-12 h-12 shrink-0 ${item.bg} ${item.color} rounded-xl flex items-center justify-center border border-brand-primary/10`}>
+                       <item.icon size={24} />
                     </div>
                     <div>
-                       <h3 className="text-xl font-bold text-slate-900 mb-1 tracking-tight italic underline decoration-slate-100 decoration-4 group-hover:decoration-brand-primary transition-all">{item.title}</h3>
-                       <p className="text-brand-primary font-black text-2xl mb-1 tracking-tight">{item.info}</p>
-                       <p className="text-slate-400 text-xs font-black uppercase tracking-widest">{item.label}</p>
+                       <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">{item.title}</h3>
+                       <p className="text-xl font-bold text-slate-900 mb-1">{item.info}</p>
+                       <p className="text-slate-500 text-xs font-medium">{item.label}</p>
                     </div>
                  </div>
                ))}
             </div>
 
-            <div className="p-12 bg-slate-50 border border-slate-200 rounded-[3rem] shadow-xl flex flex-col items-center text-center group overflow-hidden relative">
-               <div className="absolute inset-0 bg-brand-primary opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-               <MessageSquare size={48} className="text-brand-primary mb-8" strokeWidth={2.5} />
-               <h4 className="font-heading text-3xl font-black text-slate-900 mb-6 italic">Partner with Us</h4>
-               <p className="text-slate-500 text-base font-medium mb-10 leading-relaxed max-w-xs italic">
-                  Looking to build a stronger community together? We invite corporate and nonprofit partners to join our mission.
+            <div className="p-8 bg-white border border-slate-200 rounded-2xl shadow-sm flex flex-col group relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                 <MessageSquare size={80} className="text-brand-primary" strokeWidth={1} />
+               </div>
+               <h4 className="font-heading text-2xl font-bold text-slate-900 mb-3">Partner with Us</h4>
+               <p className="text-slate-500 text-sm mb-6 leading-relaxed max-w-sm">
+                  Looking to build a stronger community together? We invite corporate and nonprofit partners to join our mission of transformation.
                </p>
-               <Link to="/get-involved" className="inline-flex items-center gap-2 text-brand-primary font-bold text-sm tracking-widest uppercase hover:text-slate-900 transition-colors">
-                  Partnership Inquiries <ArrowRight size={16} />
+               <Link to="/get-involved" className="inline-flex items-center gap-2 text-brand-primary font-bold text-sm tracking-widest uppercase hover:underline group">
+                  Partnership Inquiries <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                </Link>
             </div>
           </div>
+
+          {/* Form Side (Col-7) */}
+          <div className="lg:col-span-7 reveal">
+            {submitted ? (
+              <div className="bg-white p-12 lg:p-16 text-center rounded-3xl border border-slate-200 shadow-xl">
+                <div className="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 border border-emerald-100">
+                  <CheckCircle size={40} />
+                </div>
+                <h2 className="font-heading text-3xl text-slate-900 mb-4 font-bold">Message Received</h2>
+                <p className="text-slate-600 text-lg mb-10 leading-relaxed">
+                  Thank you, <strong>{formData.name}</strong>. Your inquiry has been sent to our support team. We will respond within 24-48 business hours.
+                </p>
+                <button 
+                  onClick={() => setSubmitted(false)} 
+                  className="btn-primary"
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <div className="bg-white border border-slate-200 p-8 md:p-12 rounded-3xl shadow-xl">
+                <div className="mb-10">
+                  <h3 className="font-heading text-3xl text-slate-900 font-bold mb-2">Send us a Message</h3>
+                  <p className="text-slate-500">Please fill out the form below and we'll get back to you shortly.</p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                       <label htmlFor="name" className="text-sm font-semibold text-slate-700 block">Full Name</label>
+                       <input
+                         id="name"
+                         type="text"
+                         name="name"
+                         required
+                         placeholder="John Doe"
+                         value={formData.name}
+                         onChange={handleChange}
+                         className="w-full bg-slate-50 border border-slate-200 py-3.5 px-5 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-slate-400"
+                       />
+                    </div>
+                    <div className="space-y-2">
+                       <label htmlFor="email" className="text-sm font-semibold text-slate-700 block">Email Address</label>
+                       <input
+                         id="email"
+                         type="email"
+                         name="email"
+                         required
+                         placeholder="john@example.com"
+                         value={formData.email}
+                         onChange={handleChange}
+                         className="w-full bg-slate-50 border border-slate-200 py-3.5 px-5 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-slate-400"
+                       />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-sm font-semibold text-slate-700 block">Subject</label>
+                    <input
+                      id="subject"
+                      type="text"
+                      name="subject"
+                      required
+                      placeholder="How can we help?"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="w-full bg-slate-50 border border-slate-200 py-3.5 px-5 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-slate-400"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-semibold text-slate-700 block">Your Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={6}
+                      required
+                      placeholder="Tell us what's on your mind..."
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full bg-slate-50 border border-slate-200 py-3.5 px-5 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-slate-400 resize-none"
+                    />
+                  </div>
+
+                  <div className="pt-4">
+                    <button
+                      type="submit"
+                      className="w-full btn-primary flex items-center justify-center gap-3 py-4"
+                    >
+                      <span>Send Message</span>
+                      <Send size={18} />
+                    </button>
+                    <p className="mt-6 text-center text-xs text-slate-400 italic">
+                      Protection of your data is important to us. We will never share your personal information with third parties.
+                    </p>
+                  </div>
+                </form>
+              </div>
+            )}
+          </div>
+
         </div>
       </section>
     </div>
