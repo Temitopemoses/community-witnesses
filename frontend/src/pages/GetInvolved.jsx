@@ -50,10 +50,10 @@ export default function GetInvolved() {
           </span>
           <h1 className="font-heading text-6xl md:text-8xl font-black mb-8 animate-in leading-tight tracking-tight">
              Witness the <span className="text-brand-primary underline decoration-brand-primary/40 decoration-4 underline-offset-[16px]">Change.</span> <br />
-             Lead the mission.
+             Transform the Community.
           </h1>
           <p className="font-body text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto animate-in leading-relaxed font-medium">
-             Be part of a CIC dedicated to see lives restored, families rebuilt, and communities transformed through love, deliverance, salvation, and service.
+             Be part of a CIC dedicated to see lives restored, families rebuilt, and communities transformed through passion, power, salvation, and service.
           </p>
         </div>
       </section>

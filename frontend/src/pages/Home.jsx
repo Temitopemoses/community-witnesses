@@ -27,7 +27,7 @@ const pillars = [
     iconColor: 'text-brand-primary',
   },
   {
-    title: 'Recovery',
+    title: 'Addiction',
     desc: 'Compassionate freedom from addiction.',
     icon: TrendingUp,
     color: 'bg-emerald-500/10',
@@ -73,7 +73,7 @@ export default function Home() {
           </div>
           
           <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-white font-extrabold leading-[1.05] tracking-tight mb-8 animate-in">
-             Restoring <span className="text-brand-primary underline decoration-brand-primary/30 decoration-[8px] underline-offset-[12px]">Hope</span> <br />
+             Witnessing <span className="text-brand-primary underline decoration-brand-primary/30 decoration-[8px] underline-offset-[12px]">Hope</span> <br />
              Building <span className="text-white">Community.</span>
           </h1>
           
@@ -173,7 +173,7 @@ export default function Home() {
                   Be a source <br /> of <span className="text-brand-secondary underline underline-offset-[20px] decoration-white">hope.</span>
                </h2>
                <p className="text-white/90 text-xl md:text-3xl max-w-2xl mx-auto mb-16 font-medium leading-relaxed italic">
-                  Join a community of change agents dedicated to restoring dignity and providing restoration.
+                  Join a community of change agents dedicated to restoring hope and providing freedom.
                </p>
                <div className="flex flex-col sm:flex-row gap-8">
                   <Link to="/get-involved" className="px-16 py-6 bg-slate-900 text-white font-black text-2xl rounded-2xl hover:bg-white hover:text-slate-900 transition-all duration-500 shadow-2xl">

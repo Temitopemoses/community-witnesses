@@ -66,8 +66,8 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           
           <h1 className="font-heading text-6xl md:text-8xl font-black mb-8 animate-in leading-tight tracking-tight">
-             Driven by <span className="text-brand-primary italic">Dignity.</span> <br />
-             Led by <span className="text-white underline decoration-brand-primary/40 decoration-4">Love.</span>
+             Led by <span className="text-brand-primary italic">Love.</span> <br />
+             Driven by <span className="text-white underline decoration-brand-primary/40 decoration-4">Mission.</span>
           </h1>
           <p className="font-body text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto animate-in leading-relaxed font-medium">
              A community interest company dedicated to restoring hope and dignity to those at risk in our communities.
@@ -75,35 +75,86 @@ export default function About() {
         </div>
       </section>
 
-      {/* ════════ VISION & MISSION ════════ */}
+      {/* ════════ WHO WE ARE (ABOUT US) ════════ */}
       <section className="py-40 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="reveal space-y-12">
-            <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-extrabold leading-tight">
-               Our <span className="text-brand-primary">Vision</span> for Restoration.
+            <span className="text-brand-primary text-sm font-black uppercase tracking-[0.3em] block">Who We Are</span>
+            <h2 className="font-heading text-4xl md:text-7xl text-slate-900 font-extrabold leading-tight tracking-tight">
+               About <span className="text-brand-primary italic">Us</span>.
             </h2>
-            <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
-              We envision a community where individuals and families affected by homelessness, addiction, and mental health challenges are treated with love, respect, and dignity—fully supported towards lasting freedom.
-            </p>
-            <div className="grid grid-cols-2 gap-8 pt-8">
-               <div className="p-8 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm">
-                  <Award className="text-brand-primary mb-6" size={48} strokeWidth={2.5} />
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">The Mission</h3>
-                  <p className="text-slate-500 text-sm font-medium leading-relaxed italic">To see lives restored, families rebuilt, and communities transformed through love, deliverance, salvation, and service..</p>
+            <div className="space-y-8">
+              <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
+                We are a Community Interest Company dedicated to transforming the lives of people facing homelessness, addiction, and mental health challenges. Our work is inspired by the historic mission of the Salvation Army, yet shaped for the realities of today combining practical support, compassionate outreach, and faith‑centred hope.
+              </p>
+              <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
+                At the heart of our organisation is a simple conviction: every person is loved by God, created with purpose, and capable of complete restoration. We exist to walk with those who have been pushed to the margins, offering not only immediate help but a pathway to long‑term wholeness.
+              </p>
+            </div>
+            
+            <div className="pt-8 border-t border-slate-100 flex flex-wrap gap-8 items-center">
+               <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center">
+                     <Award className="text-brand-primary" size={24} />
+                  </div>
+                  <span className="text-slate-900 font-bold uppercase tracking-wider text-xs md:text-sm">Faith-Inspired</span>
                </div>
-               <div className="p-8 bg-brand-primary text-white rounded-3xl shadow-xl shadow-brand-primary/20">
-                  <Globe className="text-white mb-6" size={48} strokeWidth={2.5} />
-                  <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">The Strategy</h3>
-                  <p className="text-white/90 text-sm font-medium leading-relaxed italic">Helping individuals gain victory, rediscover themselves, and create change.</p>
+               <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center">
+                     <Heart className="text-rose-500" size={24} />
+                  </div>
+                  <span className="text-slate-900 font-bold uppercase tracking-wider text-xs md:text-sm">Compassionate Love</span>
                </div>
             </div>
           </div>
           <div className="reveal">
             <div className="relative rounded-[4rem] overflow-hidden shadow-2xl skew-x-1 group">
-               <img src="/images/hero.png" alt="Community Witnesses" className="w-full h-full object-cover filter contrast-110 saturate-[1.15] scale-105 group-hover:scale-100 transition-transform duration-1000" />
+               <img src="/images/hero.png" alt="Community Witnesses" className="w-full h-[600px] object-cover filter contrast-110 saturate-[1.15] scale-105 group-hover:scale-100 transition-transform duration-1000" />
                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
                <div className="absolute bottom-12 left-12 right-12 text-white">
-                  <p className="text-3xl font-black leading-tight italic">"Love is the solution to all social challenges."</p>
+                  <p className="text-3xl font-black leading-tight italic">"Every person is loved by God."</p>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════ VISION & MISSION ════════ */}
+      <section className="py-40 bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary/20 to-transparent" />
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
+          <div className="reveal order-2 lg:order-1">
+             <div className="relative rounded-[4rem] overflow-hidden shadow-2xl skew-x-[-1deg] group">
+                <img src="/images/services.png" alt="Community Witnesses Vision" className="w-full h-[600px] object-cover filter contrast-110 saturate-[1.15] scale-105 group-hover:scale-100 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+             </div>
+          </div>
+          <div className="reveal order-1 lg:order-2 space-y-16">
+            <div className="space-y-6">
+               <span className="text-brand-primary text-sm font-black uppercase tracking-[0.3em] block">Our Foundation</span>
+               <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-extrabold leading-tight tracking-tight">
+                  Vision & <span className="text-brand-primary">Mission.</span>
+               </h2>
+            </div>
+            
+            <div className="space-y-10">
+               <div className="bg-white p-12 rounded-[3rem] shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500">
+                  <div className="flex items-center gap-6 mb-8 text-brand-primary">
+                     <Eye size={48} strokeWidth={1.5} />
+                     <h3 className="text-3xl font-black text-slate-900 tracking-tight italic">Our Vision</h3>
+                  </div>
+                  <p className="text-slate-600 text-lg font-medium leading-relaxed italic">
+                    "We envision a community where individuals and families affected by homelessness, addiction, and mental health challenges are treated with love, respect, and dignity—fully supported towards lasting freedom."
+                  </p>
+               </div>
+               <div className="bg-white p-12 rounded-[3rem] shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500">
+                  <div className="flex items-center gap-6 mb-8 text-amber-500">
+                     <Zap size={48} strokeWidth={1.5} />
+                     <h3 className="text-3xl font-black text-slate-900 tracking-tight italic">Our Mission</h3>
+                  </div>
+                  <p className="text-slate-600 text-lg font-medium leading-relaxed italic">
+                    "To see lives restored, families rebuilt, and communities transformed through passion, power, salvation and service."
+                  </p>
                </div>
             </div>
           </div>

@@ -59,7 +59,7 @@ export default function Donate() {
             
             <div className="space-y-10 pt-8">
                {[
-                 { icon: Globe, title: 'Global Transparency', desc: 'Secure and transparent processing for every gift.', color: 'text-blue-500', bg: 'bg-blue-50' },
+                 { icon: Globe, title: 'Transparency', desc: 'Secure and transparent processing for every gift.', color: 'text-blue-500', bg: 'bg-blue-50' },
                  { icon: Award, title: 'Impact Verified', desc: 'Every penny goes directly to community restoration.', color: 'text-amber-500', bg: 'bg-amber-50' },
                  { icon: TrendingUp, title: 'Direct Growth', desc: 'Providing the fuel for individuals to gain victory.', color: 'text-emerald-500', bg: 'bg-emerald-50' },
                ].map((item) => (
