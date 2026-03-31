@@ -34,9 +34,9 @@ export default function Navbar() {
         {/* Logo - Modern Global Standard */}
         <Link to="/" className="flex items-center gap-3 group">
           <img 
-            src="/images/logo_cq.png" 
+            src="/images/communitywitnesses_logo.png" 
             alt="Community Witnesses Logo" 
-            className="w-14 h-14 object-contain transition-transform duration-300 group-hover:scale-105 brightness-0 invert"
+            className="w-14 h-14 object-contain transition-transform duration-300 group-hover:scale-105 "
           />
           <div className="flex flex-col">
              <span className="font-heading text-lg font-bold uppercase tracking-tight text-white leading-none">
