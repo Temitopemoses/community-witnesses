@@ -17,9 +17,11 @@ export default function Donate() {
   useEffect(() => {
     const query = new URLSearchParams(location.search)
     if (query.get('success')) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStatus('success')
     }
     if (query.get('canceled')) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStatus('canceled')
     }
   }, [location])
