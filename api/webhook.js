@@ -1,5 +1,7 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const nodemailer = require('nodemailer');
+import stripePkg from 'stripe';
+import nodemailer from 'nodemailer';
+
+const stripe = stripePkg(process.env.STRIPE_SECRET_KEY);
 
 // Email Transporter Setup
 const transporter = nodemailer.createTransport({

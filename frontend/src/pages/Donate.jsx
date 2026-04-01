@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Heart, Globe, Shield, CreditCard, CheckCircle, ArrowRight, Star, Award, TrendingUp, AlertCircle, Loader2 } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
@@ -12,19 +12,12 @@ export default function Donate() {
   const [customAmount, setCustomAmount] = useState('')
   const [donationType, setDonationType] = useState('one-time')
   const [loading, setLoading] = useState(false)
-  const [status, setStatus] = useState(null) // 'success' | 'canceled' | null
-
-  useEffect(() => {
+  const status = (() => {
     const query = new URLSearchParams(location.search)
-    if (query.get('success')) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setStatus('success')
-    }
-    if (query.get('canceled')) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setStatus('canceled')
-    }
-  }, [location])
+    if (query.get('success')) return 'success'
+    if (query.get('canceled')) return 'canceled'
+    return null
+  })() // 'success' | 'canceled' | null
 
   const handleDonate = async (e) => {
     e.preventDefault()
