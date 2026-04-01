@@ -67,8 +67,8 @@ export default function Contact() {
             <div className="space-y-8">
                {[
                  { icon: Mail, title: 'Email Correspondence', info: 'info@communitywitnesses.org', label: 'Response within 24h', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
-                 { icon: Phone, title: 'International Hotline', info: '+44 (0) 123 456 789', label: 'Emergency & General Support', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
-                 { icon: MapPin, title: 'Global Office', info: 'Manchester, United Kingdom', label: 'Official Headquarters', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
+                 { icon: Phone, title: 'Direct Mobile', info: '07947948043', label: 'Emergency & General Support', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
+                 { icon: Globe, title: 'Social Handle', info: '@ukcomwit', label: 'TikTok, Instagram, Facebook', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
                ].map((item) => (
                  <div key={item.title} className="flex gap-6 items-start">
                     <div className={`w-12 h-12 shrink-0 ${item.bg} ${item.color} rounded-xl flex items-center justify-center border border-brand-primary/10`}>

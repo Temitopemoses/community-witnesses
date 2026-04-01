@@ -12,9 +12,7 @@ import {
 import useReveal from '../hooks/useReveal'
 
 const stats = [
-  { icon: Heart, number: '15k+', label: 'Lives Transformed', color: 'text-brand-primary' },
-  { icon: Users, number: '500+', label: 'Volunteers Globally', color: 'text-brand-secondary' },
-  { icon: Globe, number: '20+', label: 'Communities Served', color: 'text-blue-600' },
+  { icon: Users, number: '', label: 'Volunteers needed across the UK', color: 'text-brand-secondary' },
   { icon: Shield, number: '24/7', label: 'Constant Support', color: 'text-emerald-600' },
 ]
 
@@ -40,14 +38,7 @@ const pillars = [
     color: 'bg-blue-500/10',
     iconColor: 'text-blue-600',
   },
-  {
-    title: 'Outreach',
-    desc: 'Engaging our local communities directly.',
-    icon: Globe,
-    color: 'bg-orange-500/10',
-    iconColor: 'text-orange-600',
-  },
-]
+ ]
 
 export default function Home() {
   const sectionRef = useReveal()
@@ -95,15 +86,15 @@ export default function Home() {
 
       {/* ════════ IMPACT BAR ════════ */}
       <section className="bg-white py-16 border-b border-slate-100 shadow-sm relative z-20 lg:mx-20 rounded-2xl shadow-2xl -translate-y-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-8 justify-center">
             {stats.map((stat, i) => (
-              <div key={stat.label} className="reveal text-center flex flex-col items-center" style={{ animationDelay: `${i * 0.1}s` }}>
+              <div key={stat.label} className="reveal text-center flex flex-col items-center justify-center" style={{ animationDelay: `${i * 0.1}s` }}>
                 <div className={`mb-4 ${stat.color} bg-slate-50 p-4 rounded-2xl`}>
                    <stat.icon size={32} strokeWidth={2.5} />
                 </div>
-                <h3 className="text-4xl font-extrabold text-slate-900 mb-2">{stat.number}</h3>
-                <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">{stat.label}</p>
+                {stat.number && <h3 className="text-4xl font-extrabold text-slate-900 mb-2">{stat.number}</h3>}
+                <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] sm:text-xs mt-2 max-w-[200px] leading-relaxed">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -141,13 +132,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="reveal text-center max-w-3xl mx-auto mb-24">
             <span className="text-orange-500 text-sm font-black uppercase tracking-[0.3em] block mb-8">What We Do</span>
-            <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-black mb-12">Building pillars of <span className="text-brand-primary underline underline-offset-8">restoration.</span></h2>
+            <h2 className="font-heading text-4xl md:text-6xl text-slate-900 font-black mb-12">Scope of <span className="text-brand-primary underline underline-offset-8">Impact.</span></h2>
             <p className="text-slate-500 text-xl font-medium leading-relaxed opacity-80">
               We provide comprehensive support services that empower individuals to gain victory, rediscover themselves, and create lasting impact.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-8">
             {pillars.map((pill, i) => (
               <div key={pill.title} className="reveal group card-global cursor-pointer border-t-[8px] border-t-brand-primary" style={{ animationDelay: `${i * 0.1}s` }}>
                  <div className={`w-16 h-16 ${pill.color} ${pill.iconColor} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500`}>

@@ -7,6 +7,7 @@ import OurWork from './pages/OurWork'
 import Donate from './pages/Donate'
 import GetInvolved from './pages/GetInvolved'
 import Contact from './pages/Contact'
+import Founder from './pages/Founder'
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/founder" element={<Founder />} />
           <Route path="/our-work" element={<OurWork />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/get-involved" element={<GetInvolved />} />

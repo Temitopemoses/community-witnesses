@@ -1,6 +1,23 @@
 import { Link } from 'react-router-dom'
 import { Globe, Mail, Phone, MapPin, Twitter, Facebook, Instagram, Linkedin, Send, Award, Shield } from 'lucide-react'
 
+const TiktokIcon = ({ size = 24, strokeWidth = 2, className = "" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+)
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -9,6 +26,7 @@ export default function Footer() {
       title: 'Our Mission',
       links: [
         { name: 'About Us', path: '/about' },
+        { name: 'Meet the Founder', path: '/founder' },
         { name: 'Our Work', path: '/our-work' },
         { name: 'Philosophy', path: '/about' },
         { name: 'History', path: '/about' },
@@ -57,11 +75,18 @@ export default function Footer() {
                  "Restoring hope and dignity through compassion, faith-inspired action, and direct community service."
               </p>
               <div className="flex gap-4">
-                 {[Twitter, Facebook, Instagram, Linkedin].map((Icon, i) => (
-                    <a key={i} href="#" className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 hover:bg-brand-primary hover:text-white hover:scale-110 transition-all duration-300">
-                       <Icon size={20} strokeWidth={2.5} />
+                 {[
+                   { Icon: Facebook, url: "https://www.facebook.com/UKcommunitywitnesses", color: "hover:bg-[#1877F2]" },
+                   { Icon: Instagram, url: "https://www.instagram.com/ukcomwit", color: "hover:bg-[#E4405F]" },
+                   { Icon: TiktokIcon, url: "https://www.tiktok.com/@ukcomwit", color: "hover:bg-[#000000]" }
+                 ].map((social, i) => (
+                    <a key={i} href={social.url} target="_blank" rel="noopener noreferrer" className={`w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 ${social.color} hover:text-white hover:scale-110 transition-all duration-300`}>
+                       <social.Icon size={20} strokeWidth={2.5} />
                     </a>
                  ))}
+                 <a href="tel:07947948043" className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 hover:bg-brand-primary hover:text-white hover:scale-110 transition-all duration-300">
+                    <Phone size={20} strokeWidth={2.5} />
+                 </a>
               </div>
            </div>
 
@@ -90,7 +115,7 @@ export default function Footer() {
                  <Globe size={40} className="text-brand-primary" strokeWidth={2.5} />
               </div>
               <div>
-                 <h4 className="font-heading text-3xl font-black text-white mb-2 italic">Global Accountability & Trust</h4>
+                 <h4 className="font-heading text-3xl font-black text-white mb-2 italic">Accountability & Trust</h4>
                  <p className="text-slate-400 text-lg font-medium italic opacity-85">"We say what we mean and stand by our words. We are accountable to the communities we serve."</p>
               </div>
            </div>

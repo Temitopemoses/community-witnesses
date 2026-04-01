@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Heart, Sparkles, Star, HandHeart, Shield, Eye, Award, Globe, Users, ArrowRight, Zap, BookOpen, Handshake } from 'lucide-react'
+import { Heart, Sparkles, Star, HandHeart, Shield, Eye, Award, Globe, Users, ArrowRight, Zap, BookOpen, Handshake, CheckCircle } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
 
 const values = [
@@ -90,6 +90,13 @@ export default function About() {
               <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
                 At the heart of our organisation is a simple conviction: every person is loved by God, created with purpose, and capable of complete restoration. We exist to walk with those who have been pushed to the margins, offering not only immediate help but a pathway to long‑term wholeness.
               </p>
+              
+              <div className="pt-6">
+                <Link to="/founder" className="btn-primary group flex items-center gap-3 text-lg px-12 py-5 rounded-full inline-flex">
+                   Meet our Founder
+                   <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
             
             <div className="pt-8 border-t border-slate-100 flex flex-wrap gap-8 items-center">

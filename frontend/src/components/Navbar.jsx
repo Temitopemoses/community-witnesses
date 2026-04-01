@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react'
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
+  { name: 'Our Founder', path: '/founder' },
   { name: 'Our Work', path: '/our-work' },
   { name: 'Get Involved', path: '/get-involved' },
   { name: 'Contact', path: '/contact' },
@@ -26,8 +27,10 @@ export default function Navbar() {
   return (
     <nav
       id="main-navigation"
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-        scrolled ? 'bg-slate-900 shadow-xl py-4 border-b border-white/5' : 'bg-slate-900/95 backdrop-blur-md py-6'
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+        scrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg py-4 border-b border-slate-100' 
+          : 'bg-white/80 backdrop-blur-sm py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
@@ -39,7 +42,7 @@ export default function Navbar() {
             className="w-14 h-14 object-contain transition-transform duration-300 group-hover:scale-105 "
           />
           <div className="flex flex-col">
-             <span className="font-heading text-lg font-bold uppercase tracking-tight text-white leading-none">
+             <span className="font-heading text-lg font-bold uppercase tracking-tight text-slate-900 leading-none">
                 Community Witnesses
              </span>
           </div>
@@ -54,7 +57,7 @@ export default function Navbar() {
                 to={link.path}
                 id={`nav-${link.name.toLowerCase().replace(' ', '-')}`}
                 className={`text-sm font-semibold transition-all duration-200 ${
-                  location.pathname === link.path ? 'text-brand-primary' : 'text-slate-300 hover:text-brand-primary'
+                  location.pathname === link.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'
                 }`}
               >
                 {link.name}
@@ -64,7 +67,7 @@ export default function Navbar() {
           <Link
             to="/donate"
             id="nav-donate-btn"
-            className="px-6 py-2.5 bg-brand-primary text-white text-sm font-bold rounded-full hover:bg-brand-secondary hover:scale-105 active:scale-95 transition-all shadow-md shadow-brand-primary/20"
+            className="px-6 py-2.5 bg-brand-primary text-white text-sm font-bold rounded-full hover:bg-brand-primary-dark hover:scale-105 active:scale-95 transition-all shadow-md shadow-brand-primary/20"
           >
             Donate Now
           </Link>
@@ -73,31 +76,38 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden text-white focus:outline-none"
+          className="lg:hidden text-slate-900 focus:outline-none z-[110]"
         >
-          {isOpen ? <X strokeWidth={2} /> : <Menu strokeWidth={2} />}
+          {isOpen ? <X strokeWidth={2.5} /> : <Menu strokeWidth={2.5} />}
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-slate-900 h-screen z-[-1] flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out ${
-          isOpen ? 'translate-y-0' : '-translate-y-full'
+        className={`fixed inset-0 bg-white/98 backdrop-blur-2xl h-screen z-[-1] flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out ${
+          isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
-        {navLinks.map((link) => (
+        {navLinks.map((link, i) => (
           <Link
             key={link.path}
             to={link.path}
+            style={{ transitionDelay: isOpen ? `${i * 100}ms` : '0ms' }}
             className={`text-2xl font-bold transition-all duration-300 ${
-              location.pathname === link.path ? 'text-brand-primary scale-110' : 'text-white hover:text-brand-primary'
-            }`}
+              location.pathname === link.path 
+                ? 'text-brand-primary scale-110' 
+                : 'text-slate-900 hover:text-brand-primary'
+            } ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
           >
             {link.name}
           </Link>
         ))}
         <Link
           to="/donate"
-          className="mt-6 px-12 py-4 bg-brand-primary text-white font-bold text-xl rounded-full shadow-lg shadow-brand-primary/30"
+          className={`mt-6 px-12 py-4 bg-brand-primary text-white font-bold text-xl rounded-full shadow-lg shadow-brand-primary/30 transition-all duration-500 ${
+            isOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}
+          style={{ transitionDelay: isOpen ? `${navLinks.length * 100}ms` : '0ms' }}
         >
           Support Our Mission
         </Link>

@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Sparkles, Users, CheckCircle, Send, ArrowRight, Heart, Star, Globe } from 'lucide-react'
+import { Sparkles, Users, CheckCircle, Send, ArrowRight, Heart, Star, Globe, User, Mail, Phone, Clock, MessageSquare, ChevronDown } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
 
 const interestOptions = [
   'Volunteering',
   'Outreach',
   'Admin Support',
-  'Mentoring',
-  'Fundraising',
+  'Other',
 ]
 
 export default function GetInvolved() {
@@ -77,82 +76,105 @@ export default function GetInvolved() {
                 <h3 className="font-heading text-4xl text-slate-900 mb-4 font-black italic">Expression of Interest</h3>
                 <p className="text-slate-400 text-sm mb-12 font-bold tracking-widest uppercase">Be part of the change agent.</p>
 
-                <div className="space-y-10">
-                   <div className="grid sm:grid-cols-2 gap-10">
+                <div className="space-y-8">
+                   <div className="grid sm:grid-cols-2 gap-8">
                       <div className="space-y-2">
-                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Full Name</label>
-                         <input
-                           type="text"
-                           name="fullName"
-                           required
-                           value={formData.fullName}
-                           onChange={handleChange}
-                           className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300"
-                         />
+                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4 mb-1 block">Full Name</label>
+                         <div className="relative group">
+                           <User className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" size={20} />
+                           <input
+                             type="text"
+                             name="fullName"
+                             required
+                             placeholder="John Doe"
+                             value={formData.fullName}
+                             onChange={handleChange}
+                             className="w-full bg-slate-50 border-2 border-slate-50 py-4 pl-14 pr-6 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-brand-primary focus:bg-white transition-all placeholder:text-slate-300"
+                           />
+                         </div>
                       </div>
                       <div className="space-y-2">
-                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Email Address</label>
-                         <input
-                           type="email"
-                           name="email"
-                           required
-                           value={formData.email}
-                           onChange={handleChange}
-                           className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300"
-                         />
+                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4 mb-1 block">Email Address</label>
+                         <div className="relative group">
+                           <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" size={20} />
+                           <input
+                             type="email"
+                             name="email"
+                             required
+                             placeholder="john@example.com"
+                             value={formData.email}
+                             onChange={handleChange}
+                             className="w-full bg-slate-50 border-2 border-slate-50 py-4 pl-14 pr-6 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-brand-primary focus:bg-white transition-all placeholder:text-slate-300"
+                           />
+                         </div>
                       </div>
                    </div>
 
-                   <div className="grid sm:grid-cols-2 gap-10">
+                   <div className="grid sm:grid-cols-2 gap-8">
                       <div className="space-y-2">
-                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Phone Number</label>
-                         <input
-                           type="tel"
-                           name="phone"
-                           value={formData.phone}
-                           onChange={handleChange}
-                           className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300"
-                         />
+                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4 mb-1 block">Phone Number</label>
+                         <div className="relative group">
+                           <Phone className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" size={20} />
+                           <input
+                             type="tel"
+                             name="phone"
+                             placeholder="+44 7000 000000"
+                             value={formData.phone}
+                             onChange={handleChange}
+                             className="w-full bg-slate-50 border-2 border-slate-50 py-4 pl-14 pr-6 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-brand-primary focus:bg-white transition-all placeholder:text-slate-300"
+                           />
+                         </div>
                       </div>
                       <div className="space-y-2">
-                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Area of Interest</label>
-                         <select
-                           name="interest"
-                           required
-                           value={formData.interest}
-                           onChange={handleChange}
-                           className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all appearance-none"
-                         >
-                           <option value="">Select Area</option>
-                           {interestOptions.map((opt) => (
-                             <option key={opt} value={opt}>{opt}</option>
-                           ))}
-                         </select>
+                         <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4 mb-1 block">Area of Interest</label>
+                         <div className="relative group">
+                           <Sparkles className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" size={20} />
+                           <select
+                             name="interest"
+                             required
+                             value={formData.interest}
+                             onChange={handleChange}
+                             className="w-full bg-slate-50 border-2 border-slate-50 py-4 pl-14 pr-12 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-brand-primary focus:bg-white transition-all appearance-none cursor-pointer"
+                           >
+                             <option value="" disabled hidden>Select an area</option>
+                             {interestOptions.map((opt) => (
+                               <option key={opt} value={opt}>{opt}</option>
+                             ))}
+                           </select>
+                           <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={20} />
+                         </div>
                       </div>
                    </div>
 
                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Availability</label>
-                      <input
-                        type="text"
-                        name="availability"
-                        placeholder="e.g., Weekends, Evenings"
-                        value={formData.availability}
-                        onChange={handleChange}
-                        className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300"
-                      />
+                      <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4 mb-1 block">Availability</label>
+                      <div className="relative group">
+                        <Clock className="absolute left-6 top-[22px] -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" size={20} />
+                        <input
+                          type="text"
+                          name="availability"
+                          placeholder="e.g., Weekends, Evenings"
+                          value={formData.availability}
+                          onChange={handleChange}
+                          className="w-full bg-slate-50 border-2 border-slate-50 py-4 pl-14 pr-6 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-brand-primary focus:bg-white transition-all placeholder:text-slate-300"
+                        />
+                      </div>
                    </div>
 
                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4">Your Motivation</label>
-                      <textarea
-                        name="message"
-                        rows={3}
-                        required
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="w-full bg-slate-50 border-2 border-slate-50 py-5 px-8 rounded-2xl text-lg font-bold focus:outline-none focus:border-brand-primary transition-all placeholder:text-slate-300 h-32 resize-none"
-                      />
+                      <label className="text-[10px] uppercase tracking-widest font-black text-slate-400 ml-4 mb-1 block">Message / Why you want to join</label>
+                      <div className="relative group">
+                        <MessageSquare className="absolute left-6 top-[22px] -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" size={20} />
+                        <textarea
+                          name="message"
+                          rows={4}
+                          required
+                          placeholder="Tell us a little about yourself and why you'd like to get involved..."
+                          value={formData.message}
+                          onChange={handleChange}
+                          className="w-full bg-slate-50 border-2 border-slate-50 py-4 pl-14 pr-6 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-brand-primary focus:bg-white transition-all placeholder:text-slate-300 resize-none h-32"
+                        />
+                      </div>
                    </div>
 
                    <button
