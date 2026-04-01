@@ -13,13 +13,36 @@ export default function Contact() {
     message: '',
   })
 
+  const [loading, setLoading] = useState(false)
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+      } else {
+        alert('Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error sending message:', error)
+      alert('Error sending message. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -183,10 +206,20 @@ export default function Contact() {
                   <div className="pt-4">
                     <button
                       type="submit"
-                      className="w-full btn-primary flex items-center justify-center gap-3 py-4"
+                      disabled={loading}
+                      className="w-full btn-primary flex items-center justify-center gap-3 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <span>Send Message</span>
-                      <Send size={18} />
+                      {loading ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Message</span>
+                          <Send size={18} />
+                        </>
+                      )}
                     </button>
                     <p className="mt-6 text-center text-xs text-slate-400 italic">
                       Protection of your data is important to us. We will never share your personal information with third parties.

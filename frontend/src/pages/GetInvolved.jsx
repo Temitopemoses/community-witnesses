@@ -22,13 +22,36 @@ export default function GetInvolved() {
     message: '',
   })
 
+  const [loading, setLoading] = useState(false)
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+      } else {
+        alert('Failed to submit interest. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting interest:', error)
+      alert('Error submitting interest. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -179,10 +202,20 @@ export default function GetInvolved() {
 
                    <button
                      type="submit"
-                     className="w-full py-6 bg-slate-900 text-white font-heading text-2xl font-black italic hover:bg-brand-primary transition-all duration-500 flex items-center justify-center gap-4 rounded-3xl shadow-2xl group active:scale-95"
+                     disabled={loading}
+                     className="w-full py-6 bg-slate-900 text-white font-heading text-2xl font-black italic hover:bg-brand-primary transition-all duration-500 flex items-center justify-center gap-4 rounded-3xl shadow-2xl group active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                    >
-                     Submit to Mission
-                     <Send className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" strokeWidth={2.5} size={24} />
+                     {loading ? (
+                       <>
+                         <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                         <span>Submitting...</span>
+                       </>
+                     ) : (
+                       <>
+                         Submit to Mission
+                         <Send className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" strokeWidth={2.5} size={24} />
+                       </>
+                     )}
                    </button>
                 </div>
               </form>
