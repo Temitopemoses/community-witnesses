@@ -66,7 +66,7 @@ export default function Contact() {
             
             <div className="space-y-8">
                {[
-                 { icon: Mail, title: 'Email Correspondence', info: 'info@communitywitnesses.org', label: 'Response within 24h', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
+                 { icon: Mail, title: 'Email Correspondence', info: 'info@communitywitnesses.org.uk', label: 'Response within 24h', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
                  { icon: Phone, title: 'Direct Mobile', info: '07947948043', label: 'Emergency & General Support', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
                  { icon: Globe, title: 'Social Handle', info: '@ukcomwit', label: 'TikTok, Instagram, Facebook', color: 'text-brand-primary', bg: 'bg-brand-primary/5' },
                ].map((item) => (
