@@ -11,5 +11,4 @@
     "nodemailer": "^8.0.3",
     "stripe": "^20.4.1"
   }
-}</content>
-<parameter name="filePath">c:\Users\USER\Desktop\community witnesses\api\package.json
+}
