@@ -33,8 +33,7 @@ export default function Donate() {
     const amount = customAmount ? parseFloat(customAmount) : selectedAmount
 
     try {
-      // Assuming backend runs on localhost:8000
-      const response = await fetch('http://localhost:8000/api/donations/create-checkout-session/', {
+      const response = await fetch('/api/donations/create-checkout-session/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
