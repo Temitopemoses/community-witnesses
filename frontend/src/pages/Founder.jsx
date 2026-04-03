@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom'
 import { Heart, Globe, Zap, HandHeart, Star, Shield, Award, CheckCircle, ArrowRight, Linkedin, Twitter, Mail, Instagram, Facebook } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
+import useSEO from '../hooks/useSEO'
 
 export default function Founder() {
   const sectionRef = useReveal()
+  useSEO(
+    'Dornubari C. Firima — Founder',
+    'Discover the journey and vision of Dornubari Cletus Firima, Founder of Community Witnesses CIC, and his commitment to community transformation through public health and theology.'
+  )
 
   return (
     <div ref={sectionRef} className="bg-white">
@@ -135,7 +140,12 @@ export default function Founder() {
                 <div className="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-2xl flex items-center justify-center mb-6 hover:scale-110 transition-transform">
                   <pillar.icon size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-brand-secondary mb-4">{pillar.title}</h3>
+                <h3 className="text-xl font-bold text-brand-secondary mb-4">
+                  {pillar.title.split(' (')[0]}
+                  <span className="block text-base font-bold text-brand-secondary mt-1">
+                    ({pillar.title.split(' (')[1]}
+                  </span>
+                </h3>
                 <p className="text-slate-600 text-sm leading-relaxed">{pillar.desc}</p>
               </div>
             ))}

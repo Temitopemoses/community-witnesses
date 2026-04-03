@@ -44,22 +44,22 @@ export default function Navbar() {
             alt="Community Witnesses Logo" 
             className="w-14 h-14 object-contain transition-transform duration-300 group-hover:scale-105 "
           />
-          <div className="flex flex-col">
-             <span className="font-heading text-lg font-bold uppercase tracking-tight text-slate-900 leading-none">
-                Community Witnesses
-             </span>
+           <div className="flex flex-col">
+            <span className={`font-heading font-black uppercase tracking-tight text-slate-900 leading-none whitespace-nowrap transition-all duration-500 ${scrolled ? 'text-lg' : 'text-xl md:text-2xl'}`}>
+              Community Witnesses
+            </span>
           </div>
         </Link>
 
-        {/* Desktop Links - Clean NGO Style */}
-        <div className="hidden lg:flex items-center gap-10">
-          <div className="flex gap-8">
+        {/* Desktop Links - Optimized for high-density navigation */}
+        <div className="hidden lg:flex items-center gap-6 xl:gap-10">
+          <div className="flex gap-4 xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 id={`nav-${link.name.toLowerCase().replace(' ', '-')}`}
-                className={`text-sm font-semibold transition-all duration-200 ${
+                className={`text-xs xl:text-sm font-bold uppercase tracking-widest transition-all duration-200 ${
                   location.pathname === link.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'
                 }`}
               >

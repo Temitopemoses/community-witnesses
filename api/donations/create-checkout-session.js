@@ -26,15 +26,20 @@ export default async function handler(req, res) {
           price_data: {
             currency: 'gbp',
             product_data: {
-              name: `Donation to Community Witnesses (${donation_type || 'one-time'})`,
+              name: `Donation to Community Witnesses (${donation_type === 'monthly' ? 'Monthly' : 'One-time'})`,
               description: 'Thank you for your generous support of our mission to restore hope.',
             },
             unit_amount: unitAmount,
+            ...(donation_type === 'monthly' && {
+              recurring: {
+                interval: 'month',
+              },
+            }),
           },
           quantity: 1,
         },
       ],
-      mode: 'payment',
+      mode: donation_type === 'monthly' ? 'subscription' : 'payment',
       success_url: `${process.env.FRONTEND_URL}/donate?success=true`,
       cancel_url: `${process.env.FRONTEND_URL}/donate?canceled=true`,
     });

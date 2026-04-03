@@ -2,9 +2,14 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin, CheckCircle, Send, Globe, MessageSquare, ArrowRight } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
+import useSEO from '../hooks/useSEO'
 
 export default function Contact() {
   const sectionRef = useReveal()
+  useSEO(
+    'Contact Us',
+    'Have questions or want to partner with us? Reach out to Community Witnesses via email, phone, or our contact form. Our team is here to listen and respond with compassion.'
+  )
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     name: '',

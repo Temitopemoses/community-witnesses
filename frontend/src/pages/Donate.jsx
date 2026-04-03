@@ -2,13 +2,18 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Heart, Globe, Shield, CreditCard, CheckCircle, ArrowRight, Star, Award, TrendingUp, AlertCircle, Loader2 } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
+import useSEO from '../hooks/useSEO'
 
-const donationAmounts = [25, 50, 100, 250, 500, 1000]
+const donationAmounts = [5, 10, 25, 50, 100, 250, 500, 1000]
 
 export default function Donate() {
   const sectionRef = useReveal()
+  useSEO(
+    'Support Our Mission',
+    'Your support restores hope. Map a difference today by contributing to our community outreach and recovery programs. 100% of your donation goes directly towards our mission.'
+  )
   const location = useLocation()
-  const [selectedAmount, setSelectedAmount] = useState(100)
+  const [selectedAmount, setSelectedAmount] = useState(25)
   const [customAmount, setCustomAmount] = useState('')
   const [donationType, setDonationType] = useState('one-time')
   const [loading, setLoading] = useState(false)
@@ -37,7 +42,16 @@ export default function Donate() {
         }),
       })
 
-      const data = await response.json()
+      // Get raw text first to debug if JSON parsing fails
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (parseError) {
+        console.error('Failed to parse response JSON:', text);
+        throw new Error('Invalid JSON response from server');
+      }
+
       if (data.url) {
         window.location.href = data.url
       } else {
@@ -92,7 +106,7 @@ export default function Donate() {
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-8">
                 Community Witnesses is dedicated to providing lasting freedom for those at risk.
-                100% of your donation goes directly towards our community outreach and support programs.
+                100% of your donation goes directly towards our community outreach and support programme.
               </p>
             </div>
 
@@ -117,7 +131,7 @@ export default function Donate() {
             <div className="p-8 bg-white border border-slate-200 rounded-2xl shadow-sm">
               <div className="flex items-center gap-4 mb-4 text-brand-primary">
                 <Heart size={32} />
-                <h4 className="font-heading text-xl font-bold text-slate-900">Charity Overview</h4>
+                <h4 className="font-heading text-xl font-bold text-slate-900">CIC Overview</h4>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed mb-6">
                 "We rely on the power of God for transformation and restoration. Your gift is an investment in a brighter future for every individual."

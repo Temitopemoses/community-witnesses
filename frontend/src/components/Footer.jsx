@@ -62,13 +62,12 @@ export default function Footer() {
            <div className="lg:col-span-5 space-y-12">
               <Link to="/" className="flex items-center gap-4 group">
                  <img 
-                   src="/images/logo_cq.png" 
+                   src="/images/communitywitnesses_logo.png" 
                    alt="Community Witnesses Logo" 
-                   className="w-16 h-16 object-contain transition-transform duration-500 group-hover:scale-110 brightness-0 invert"
+                   className="w-16 h-16 object-contain transition-transform duration-500 group-hover:scale-110 "
                  />
                  <div className="flex flex-col">
                     <span className="font-heading text-3xl font-black uppercase tracking-tight text-white leading-none">Community Witnesses</span>
-                    <span className="text-[11px] uppercase tracking-[0.4em] text-brand-primary font-black mt-1">International Standard</span>
                  </div>
               </Link>
               <p className="text-slate-400 text-lg md:text-xl font-medium italic leading-relaxed max-w-md">

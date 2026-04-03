@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Heart, Sparkles, Star, HandHeart, Shield, Eye, Award, Globe, Users, ArrowRight, Zap, BookOpen, Handshake, CheckCircle } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
+import useSEO from '../hooks/useSEO'
 
 const values = [
   { icon: Heart, name: 'Love', desc: 'Love is the solution to all social challenges, expressed without judgment.', color: 'text-rose-500', bg: 'bg-rose-50' },
@@ -50,6 +51,10 @@ const pillarsData = [
 ]
 export default function About() {
   const sectionRef = useReveal()
+  useSEO(
+    'About Our Mission',
+    'Learn about the vision, mission, and core values of Community Witnesses CIC. We are dedicated to providing lasting freedom and restoration to communities in need.'
+  )
 
   return (
     <div ref={sectionRef}>

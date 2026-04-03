@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Sparkles, Users, CheckCircle, Send, ArrowRight, Heart, Star, Globe, User, Mail, Phone, Clock, MessageSquare, ChevronDown } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
+import useSEO from '../hooks/useSEO'
 
 const interestOptions = [
   'Volunteering',
@@ -12,6 +13,10 @@ const interestOptions = [
 
 export default function GetInvolved() {
   const sectionRef = useReveal()
+  useSEO(
+    'Volunteer & Get Involved',
+    'Be part of the change in your community. Volunteer your time, expertise, or support to help Community Witnesses restore dignity and hope to those in need.'
+  )
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     fullName: '',

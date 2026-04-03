@@ -101,15 +101,18 @@ app.use(express.json());
 
 // Health check
 app.get('/', (req, res) => {
+  console.log('\uD83D\uDDA5\uFE0F Root health check received');
   res.send('Community Witnesses Donation API is running.');
 });
 
 // Donation Route
 app.post('/api/donations/create-checkout-session/', async (req, res) => {
+  console.log('\uD83D\uDCE9 Received donation request:', req.body);
   try {
     const { amount, donation_type } = req.body;
     
     if (!amount) {
+      console.error('\u274C Missing amount');
       return res.status(400).json({ error: 'Amount is required' });
     }
 
@@ -124,23 +127,32 @@ app.post('/api/donations/create-checkout-session/', async (req, res) => {
           price_data: {
             currency: 'gbp',
             product_data: {
-              name: `Donation to Community Witnesses (${donation_type || 'one-time'})`,
+              name: `Donation to Community Witnesses (${donation_type === 'monthly' ? 'Monthly' : 'One-time'})`,
               description: 'Thank you for your generous support of our mission to restore hope.',
             },
             unit_amount: unitAmount,
+            ...(donation_type === 'monthly' && {
+              recurring: {
+                interval: 'month',
+              },
+            }),
           },
           quantity: 1,
         },
       ],
-      mode: 'payment',
+      mode: donation_type === 'monthly' ? 'subscription' : 'payment',
       success_url: `${process.env.FRONTEND_URL}/donate?success=true`,
       cancel_url: `${process.env.FRONTEND_URL}/donate?canceled=true`,
     });
 
     res.json({ url: session.url });
   } catch (error) {
-    console.error('Error creating checkout session:', error);
-    res.status(500).json({ error: error.message });
+    console.error('\u274C Stripe Error:', error.message);
+    console.error(error);
+    res.status(error.statusCode || 500).json({ 
+      error: error.message,
+      type: error.type 
+    });
   }
 });
 

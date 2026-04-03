@@ -10,6 +10,7 @@ import {
   Award,
 } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
+import useSEO from '../hooks/useSEO'
 
 const stats = [
   { icon: Users, number: '', label: 'Volunteers needed across the UK', color: 'text-brand-secondary' },
@@ -42,6 +43,10 @@ const pillars = [
 
 export default function Home() {
   const sectionRef = useReveal()
+  useSEO(
+    'Witnessing Hope, Building Community',
+    'Restoring hope, dignity, and transformation within communities affected by homelessness, addiction, and mental health challenges in the UK.'
+  )
 
   return (
     <div ref={sectionRef}>

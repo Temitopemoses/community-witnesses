@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Award, TrendingUp, Heart, Globe, ArrowRight, Shield, Star, Users, ChevronLeft, ChevronRight } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
+import useSEO from '../hooks/useSEO'
 
 const newImages = [
   '/images/WhatsApp Image 2026-03-18 at 00.10.09.jpeg',
@@ -48,6 +49,10 @@ const programs = [
 
 export default function OurWork() {
   const sectionRef = useReveal()
+  useSEO(
+    'Our Services & Impact',
+    'Explore our support services for homelessness, addiction recovery, and mental health. We empower individuals to rebuild their lives through practical and compassionate outreach.'
+  )
   const [currentImage, setCurrentImage] = useState(0)
 
   useEffect(() => {
