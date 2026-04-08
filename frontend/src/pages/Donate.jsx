@@ -27,7 +27,7 @@ export default function Donate() {
   const handleDonate = async (e) => {
     e.preventDefault()
     setLoading(true)
-    
+
     const amount = customAmount ? parseFloat(customAmount) : selectedAmount
 
     try {
@@ -166,9 +166,10 @@ export default function Donate() {
                     <p className="text-sm font-medium">The payment process was canceled. Please try again or contact us if you need help.</p>
                   </div>
                 )}
-                
+
                 <div className="mb-10">
                   <h3 className="font-heading text-3xl text-slate-900 font-bold mb-2">Make a Contribution</h3>
+                  <p className="text-brand-primary text-lg font-bold italic mb-2">Your community needs you. Be a witness today.</p>
                   <p className="text-slate-500">Every contribution helps us reach more people in need.</p>
                 </div>
 
@@ -181,8 +182,8 @@ export default function Donate() {
                         type="button"
                         onClick={() => setDonationType(type)}
                         className={`flex-1 py-3 text-sm font-bold tracking-widest uppercase rounded-lg transition-all ${donationType === type
-                            ? 'bg-white text-brand-primary shadow-sm'
-                            : 'text-slate-500 hover:text-slate-700'
+                          ? 'bg-white text-brand-primary shadow-sm'
+                          : 'text-slate-500 hover:text-slate-700'
                           }`}
                       >
                         {type}
@@ -198,8 +199,8 @@ export default function Donate() {
                         type="button"
                         onClick={() => { setSelectedAmount(amount); setCustomAmount(''); }}
                         className={`py-6 rounded-xl border-2 transition-all font-heading text-2xl font-bold ${selectedAmount === amount && !customAmount
-                            ? 'bg-brand-primary text-white border-brand-primary shadow-lg shadow-brand-primary/20 scale-[1.02]'
-                            : 'border-slate-100 bg-slate-50 text-slate-400 hover:border-brand-primary/20 hover:text-brand-primary'
+                          ? 'bg-brand-primary text-white border-brand-primary shadow-lg shadow-brand-primary/20 scale-[1.02]'
+                          : 'border-slate-100 bg-slate-50 text-slate-400 hover:border-brand-primary/20 hover:text-brand-primary'
                           }`}
                       >
                         £{amount}

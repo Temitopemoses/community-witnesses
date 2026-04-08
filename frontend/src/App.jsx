@@ -10,6 +10,8 @@ import Contact from './pages/Contact'
 import Founder from './pages/Founder'
 import ScrollToTop from './components/ScrollToTop'
 
+import FloatingDonateButton from './components/FloatingDonateButton'
+
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -27,6 +29,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <FloatingDonateButton />
     </div>
   )
 }

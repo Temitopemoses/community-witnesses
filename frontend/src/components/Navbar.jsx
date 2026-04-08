@@ -45,21 +45,21 @@ export default function Navbar() {
             className="w-14 h-14 object-contain transition-transform duration-300 group-hover:scale-105 "
           />
            <div className="flex flex-col">
-            <span className={`font-heading font-black uppercase tracking-tight text-slate-900 leading-none whitespace-nowrap transition-all duration-500 ${scrolled ? 'text-lg' : 'text-xl md:text-2xl'}`}>
+            <span className={`font-heading font-black uppercase tracking-tight text-slate-900 leading-none whitespace-nowrap transition-all duration-500 ${scrolled ? 'text-base md:text-lg' : 'text-lg md:text-xl'}`}>
               Community Witnesses
             </span>
           </div>
         </Link>
 
         {/* Desktop Links - Optimized for high-density navigation */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-10">
-          <div className="flex gap-4 xl:gap-8">
+        <div className="hidden xl:flex items-center gap-6 xl:gap-8">
+          <div className="flex gap-4 xl:gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 id={`nav-${link.name.toLowerCase().replace(' ', '-')}`}
-                className={`text-xs xl:text-sm font-bold uppercase tracking-widest transition-all duration-200 ${
+                className={`text-[10px] xl:text-xs font-bold uppercase tracking-widest transition-all duration-200 ${
                   location.pathname === link.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'
                 }`}
               >
@@ -70,7 +70,7 @@ export default function Navbar() {
           <Link
             to="/donate"
             id="nav-donate-btn"
-            className="px-6 py-2.5 bg-brand-primary text-white text-sm font-bold rounded-full hover:bg-brand-primary-dark hover:scale-105 active:scale-95 transition-all shadow-md shadow-brand-primary/20"
+            className="px-5 py-2 xl:px-6 xl:py-2.5 bg-brand-primary text-white text-[10px] xl:text-sm font-bold rounded-full hover:bg-brand-primary-dark hover:scale-105 active:scale-95 transition-all shadow-md shadow-brand-primary/20"
           >
             Donate Now
           </Link>
@@ -79,7 +79,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden text-slate-900 focus:outline-none z-[110]"
+          className="xl:hidden text-slate-900 focus:outline-none z-[110]"
         >
           {isOpen ? <X strokeWidth={2.5} /> : <Menu strokeWidth={2.5} />}
         </button>
