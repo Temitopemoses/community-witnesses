@@ -23,7 +23,6 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false)
   }, [location])
 
@@ -42,7 +41,7 @@ export default function Navbar() {
           <img 
             src="/images/communitywitnesses_logo.png" 
             alt="Community Witnesses Logo" 
-            className="w-14 h-14 object-contain transition-transform duration-300 group-hover:scale-105 "
+            className="w-14 h-14 object-contain transition-transform duration-300 group-hover:scale-105"
           />
            <div className="flex flex-col">
             <span className={`font-heading font-black uppercase tracking-tight text-slate-900 leading-none whitespace-nowrap transition-all duration-500 ${scrolled ? 'text-base md:text-lg' : 'text-lg md:text-xl'}`}>
@@ -52,14 +51,14 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links - Optimized for high-density navigation */}
-        <div className="hidden xl:flex items-center gap-6 xl:gap-8">
-          <div className="flex gap-4 xl:gap-6">
+        <div className="hidden lg:flex items-center gap-6 lg:gap-8">
+          <div className="flex gap-4 lg:gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 id={`nav-${link.name.toLowerCase().replace(' ', '-')}`}
-                className={`text-[10px] xl:text-xs font-bold uppercase tracking-widest transition-all duration-200 ${
+                className={`text-[10px] lg:text-xs font-bold uppercase tracking-widest transition-all duration-200 ${
                   location.pathname === link.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'
                 }`}
               >
@@ -70,7 +69,7 @@ export default function Navbar() {
           <Link
             to="/donate"
             id="nav-donate-btn"
-            className="px-5 py-2 xl:px-6 xl:py-2.5 bg-brand-primary text-white text-[10px] xl:text-sm font-bold rounded-full hover:bg-brand-primary-dark hover:scale-105 active:scale-95 transition-all shadow-md shadow-brand-primary/20"
+            className="px-5 py-2 lg:px-6 lg:py-2.5 bg-brand-primary text-white text-[10px] lg:text-sm font-bold rounded-full hover:bg-brand-primary-dark hover:scale-105 active:scale-95 transition-all shadow-md shadow-brand-primary/20"
           >
             Donate Now
           </Link>
@@ -79,7 +78,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="xl:hidden text-slate-900 focus:outline-none z-[110]"
+          className="lg:hidden text-slate-900 focus:outline-none z-[110]"
         >
           {isOpen ? <X strokeWidth={2.5} /> : <Menu strokeWidth={2.5} />}
         </button>
@@ -87,8 +86,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-white/98 backdrop-blur-2xl h-screen z-[-1] flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out ${
-          isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+        className={`fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-2xl min-h-screen flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out z-50 ${
+          isOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
         {navLinks.map((link, i) => (
