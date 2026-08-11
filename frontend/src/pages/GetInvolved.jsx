@@ -38,18 +38,28 @@ export default function GetInvolved() {
     setLoading(true)
 
     try {
-      const response = await fetch('/api/contact', {
+      const payload = {
+        access_key: 'ecf89f2e-fc6a-4e40-81e7-7cb7b1dba761',
+        subject: `New Volunteer Interest: ${formData.fullName}`,
+        from_name: formData.fullName,
+        ...formData,
+      }
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       })
 
-      if (response.ok) {
+      const result = await response.json()
+
+      if (result.success) {
         setSubmitted(true)
       } else {
-        alert('Failed to submit interest. Please try again.')
+        alert(result.message || 'Failed to submit interest. Please try again.')
       }
     } catch (error) {
       console.error('Error submitting interest:', error)
