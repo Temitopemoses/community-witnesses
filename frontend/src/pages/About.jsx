@@ -90,7 +90,7 @@ export default function About() {
             </h2>
             <div className="space-y-8">
               <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
-                We are a Community Interest Company dedicated to transforming the lives of people facing homelessness, addiction, and mental health challenges. Our work is inspired by the historic mission of the Salvation Army, yet shaped for the realities of today combining practical support, compassionate outreach, and faith‑centred hope.
+                We are a Community Interest Company dedicated to transforming the lives of people facing homelessness, addiction, and mental health challenges. Shaped for the realities of today combining practical support, compassionate outreach, and faith‑centred hope.
               </p>
               <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
                 At the heart of our organisation is a simple conviction: every person is loved by God, created with purpose, and capable of complete restoration. We exist to walk with those who have been pushed to the margins, offering not only immediate help but a pathway to long‑term wholeness.
