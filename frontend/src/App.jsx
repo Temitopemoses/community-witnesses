@@ -8,6 +8,7 @@ import Donate from './pages/Donate'
 import GetInvolved from './pages/GetInvolved'
 import Contact from './pages/Contact'
 import Founder from './pages/Founder'
+import VolunteerForm from './pages/VolunteerForm'
 import ScrollToTop from './components/ScrollToTop'
 
 import FloatingDonateButton from './components/FloatingDonateButton'
@@ -26,6 +27,7 @@ function App() {
           <Route path="/donate" element={<Donate />} />
           <Route path="/get-involved" element={<GetInvolved />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/volunteer-form" element={<VolunteerForm />} />
         </Routes>
       </main>
       <Footer />

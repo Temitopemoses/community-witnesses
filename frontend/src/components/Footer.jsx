@@ -35,7 +35,7 @@ export default function Footer() {
     {
       title: 'Get Involved',
       links: [
-        { name: 'Volunteer', path: '/get-involved' },
+        { name: 'Volunteer', path: '/volunteer-form' },
         { name: 'Donate Now', path: '/donate' },
         { name: 'Partnerships', path: '/contact' },
         { name: 'Newsletter', path: '/get-involved' },
