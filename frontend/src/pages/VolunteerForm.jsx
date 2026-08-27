@@ -4,6 +4,47 @@ import { CheckCircle, Upload, Send, Info } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
 import useSEO from '../hooks/useSEO'
 
+const InputField = ({ label, name, type = "text", required = true, placeholder = "", options = {}, formData, handleChange }) => (
+  <div className="space-y-2">
+    <label htmlFor={name} className="text-sm font-semibold text-slate-700 block">
+      {label} {required && <span className="text-brand-primary">*</span>}
+      {options.optional && <span className="text-slate-400 font-normal ml-1">(Optional)</span>}
+    </label>
+    {type === 'textarea' ? (
+      <textarea
+        id={name}
+        name={name}
+        required={required}
+        placeholder={placeholder}
+        value={formData[name]}
+        onChange={handleChange}
+        rows={4}
+        className="w-full bg-slate-50 border border-slate-200 py-3.5 px-5 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-slate-400 resize-none"
+      />
+    ) : (
+      <input
+        id={name}
+        type={type}
+        name={name}
+        required={required}
+        placeholder={placeholder}
+        value={formData[name]}
+        onChange={handleChange}
+        className="w-full bg-slate-50 border border-slate-200 py-3.5 px-5 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-slate-400"
+      />
+    )}
+  </div>
+)
+
+const SectionTitle = ({ title, step }) => (
+  <div className="flex items-center gap-4 mb-8 mt-12 pb-4 border-b border-slate-200">
+    <div className="w-8 h-8 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-sm shrink-0">
+      {step}
+    </div>
+    <h3 className="font-heading text-2xl text-slate-900 font-bold">{title}</h3>
+  </div>
+)
+
 export default function VolunteerForm() {
   const sectionRef = useReveal()
   useSEO(
@@ -149,46 +190,6 @@ export default function VolunteerForm() {
     }
   }
 
-  const InputField = ({ label, name, type = "text", required = true, placeholder = "", options = {} }) => (
-    <div className="space-y-2">
-      <label htmlFor={name} className="text-sm font-semibold text-slate-700 block">
-        {label} {required && <span className="text-brand-primary">*</span>}
-        {options.optional && <span className="text-slate-400 font-normal ml-1">(Optional)</span>}
-      </label>
-      {type === 'textarea' ? (
-        <textarea
-          id={name}
-          name={name}
-          required={required}
-          placeholder={placeholder}
-          value={formData[name]}
-          onChange={handleChange}
-          rows={4}
-          className="w-full bg-slate-50 border border-slate-200 py-3.5 px-5 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-slate-400 resize-none"
-        />
-      ) : (
-        <input
-          id={name}
-          type={type}
-          name={name}
-          required={required}
-          placeholder={placeholder}
-          value={formData[name]}
-          onChange={handleChange}
-          className="w-full bg-slate-50 border border-slate-200 py-3.5 px-5 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-slate-400"
-        />
-      )}
-    </div>
-  )
-
-  const SectionTitle = ({ title, step }) => (
-    <div className="flex items-center gap-4 mb-8 mt-12 pb-4 border-b border-slate-200">
-      <div className="w-8 h-8 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-sm shrink-0">
-        {step}
-      </div>
-      <h3 className="font-heading text-2xl text-slate-900 font-bold">{title}</h3>
-    </div>
-  )
 
   return (
     <div ref={sectionRef}>
@@ -259,39 +260,42 @@ export default function VolunteerForm() {
                 {/* 1. Personal Details */}
                 <SectionTitle step="1" title="Personal Details" />
                 <div className="grid md:grid-cols-2 gap-6">
-                  <InputField label="Full Name" name="fullName" />
-                  <InputField label="Date of Birth" name="dateOfBirth" type="date" />
-                  <InputField label="Phone Number" name="phoneNumber" type="tel" />
-                  <InputField label="Email Address" name="emailAddress" type="email" />
+                  <InputField formData={formData} handleChange={handleChange} label="Full Name" name="fullName" />
+                  <InputField formData={formData} handleChange={handleChange} label="Date of Birth" name="dateOfBirth" type="date" />
+                  <InputField formData={formData} handleChange={handleChange} label="Phone Number" name="phoneNumber" type="tel" />
+                  <InputField formData={formData} handleChange={handleChange} label="Email Address" name="emailAddress" type="email" />
                 </div>
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="md:col-span-2">
-                    <InputField label="Address" name="address" />
+                    <InputField formData={formData} handleChange={handleChange} label="Address" name="address" />
                   </div>
-                  <InputField label="Postcode" name="postcode" />
+                  <InputField formData={formData} handleChange={handleChange} label="Postcode" name="postcode" />
                 </div>
 
                 {/* 2. Emergency Contact */}
                 <SectionTitle step="2" title="Emergency Contact" />
                 <div className="grid md:grid-cols-2 gap-6">
-                  <InputField label="Contact Name" name="emergencyName" />
-                  <InputField label="Relationship to You" name="emergencyRelationship" />
-                  <InputField label="Phone Number" name="emergencyPhone" type="tel" />
+                  <InputField formData={formData} handleChange={handleChange} label="Contact Name" name="emergencyName" />
+                  <InputField formData={formData} handleChange={handleChange} label="Relationship to You" name="emergencyRelationship" />
+                  <InputField formData={formData} handleChange={handleChange} label="Phone Number" name="emergencyPhone" type="tel" />
                 </div>
 
                 {/* 3. About You */}
                 <SectionTitle step="3" title="About You" />
                 <InputField 
+                  formData={formData} handleChange={handleChange}
                   label="Why would you like to volunteer with Community Witnesses CIC?" 
                   name="whyVolunteer" 
                   type="textarea" 
                 />
                 <InputField 
+                  formData={formData} handleChange={handleChange}
                   label="What skills or experience do you bring?" 
                   name="skillsExperience" 
                   type="textarea" 
                 />
                 <InputField 
+                  formData={formData} handleChange={handleChange}
                   label="Any lived experience relevant to this role?" 
                   name="livedExperience" 
                   type="textarea" 
@@ -350,6 +354,7 @@ export default function VolunteerForm() {
                 {/* 6. Health & Safety */}
                 <SectionTitle step="6" title="Health & Safety" />
                 <InputField 
+                  formData={formData} handleChange={handleChange}
                   label="Any health conditions we should be aware of for safety purposes?" 
                   name="healthConditions" 
                   type="textarea" 
@@ -360,10 +365,10 @@ export default function VolunteerForm() {
                 {/* 7. Reference */}
                 <SectionTitle step="7" title="Reference" />
                 <div className="grid md:grid-cols-2 gap-6">
-                  <InputField label="Reference Name" name="refName" />
-                  <InputField label="Relationship to You" name="refRelationship" />
-                  <InputField label="Phone Number" name="refPhone" type="tel" />
-                  <InputField label="Email Address" name="refEmail" type="email" />
+                  <InputField formData={formData} handleChange={handleChange} label="Reference Name" name="refName" />
+                  <InputField formData={formData} handleChange={handleChange} label="Relationship to You" name="refRelationship" />
+                  <InputField formData={formData} handleChange={handleChange} label="Phone Number" name="refPhone" type="tel" />
+                  <InputField formData={formData} handleChange={handleChange} label="Email Address" name="refEmail" type="email" />
                 </div>
 
                 {/* 8. Identity Verification */}

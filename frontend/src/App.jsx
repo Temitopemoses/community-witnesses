@@ -12,6 +12,7 @@ import VolunteerForm from './pages/VolunteerForm'
 import ScrollToTop from './components/ScrollToTop'
 
 import FloatingDonateButton from './components/FloatingDonateButton'
+import FloatingVolunteerButton from './components/FloatingVolunteerButton'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       </main>
       <Footer />
       <FloatingDonateButton />
+      <FloatingVolunteerButton />
     </div>
   )
 }
