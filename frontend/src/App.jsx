@@ -13,6 +13,7 @@ import ScrollToTop from './components/ScrollToTop'
 
 import FloatingDonateButton from './components/FloatingDonateButton'
 import FloatingVolunteerButton from './components/FloatingVolunteerButton'
+import Project from './pages/Project'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/get-involved" element={<GetInvolved />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/volunteer-form" element={<VolunteerForm />} />
+          <Route path="/project" element={<Project />} />
         </Routes>
       </main>
       <Footer />
