@@ -17,9 +17,9 @@ export default function Project() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <span className="inline-block py-1.5 px-4 rounded-full bg-white/20 text-white text-sm font-semibold tracking-wider uppercase mb-8 backdrop-blur-sm border border-white/30 shadow-lg">
+          {/* <span className="inline-block py-1.5 px-4 rounded-full bg-white/20 text-white text-sm font-semibold tracking-wider uppercase mb-8 backdrop-blur-sm border border-white/30 shadow-lg">
             A Community Witnesses CIC Initiative
-          </span>
+          </span> */}
           <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight drop-shadow-lg leading-tight">
             STREETCONNECT <br className="hidden sm:block" /> SWINDON
           </h1>
