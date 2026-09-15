@@ -223,7 +223,7 @@ export default function Project() {
             />
           </div>
           <p className="text-slate-600 text-xl leading-relaxed font-medium">
-            StreetConnect Swindon is proudly funded by the <strong className="text-slate-900 font-bold">National Lottery Community Fund</strong> and <strong className="text-slate-900 font-bold">10Givings</strong>, with additional support from local donations, CIC contributions, and volunteer time.
+            StreetConnect Swindon is proudly funded by the <strong className="text-slate-900 font-bold">National Lottery Award for all</strong> and <strong className="text-slate-900 font-bold">10Givings</strong>, with additional support from local donations, CIC contributions, and volunteer time.
           </p>
         </div>
       </section>
