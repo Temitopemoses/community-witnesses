@@ -140,12 +140,7 @@ export default function VolunteerForm() {
     setLoading(true)
     setFileError('')
 
-    if (!files.idProof) {
-      setFileError('Identity Verification (ID Upload) is required.')
-      setLoading(false)
-      window.scrollTo({ top: document.getElementById('id-upload-section').offsetTop - 100, behavior: 'smooth' })
-      return
-    }
+
 
     try {
       const data = new FormData()
@@ -383,7 +378,7 @@ export default function VolunteerForm() {
                   )}
                   
                   <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl space-y-4">
-                    <p className="text-sm text-slate-600">Please upload one valid form of ID for identity and DBS verification. Accepted ID types:</p>
+                    <p className="text-sm text-slate-600">You may optionally upload a valid form of ID for identity and DBS verification. Accepted ID types:</p>
                     <ul className="text-sm font-medium text-slate-800 grid grid-cols-1 md:grid-cols-2 gap-2 list-disc list-inside">
                       <li>Passport</li>
                       <li>Driving Licence</li>
@@ -405,7 +400,6 @@ export default function VolunteerForm() {
                           type="file" 
                           className="hidden" 
                           accept="image/*,.pdf" 
-                          required 
                           onChange={(e) => handleFileChange(e, 'idProof')} 
                         />
                       </label>
